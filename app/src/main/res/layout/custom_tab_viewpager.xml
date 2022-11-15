@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/size_height_tab"
+    android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/_2sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,58 +16,27 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgIconTab"
-            android:layout_width="@dimen/size_24"
-            android:layout_height="@dimen/size_24"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_marginTop="@dimen/size_2"
-            android:padding="2.5dp"
+            app:tint="@color/active"
+            android:padding="@dimen/size_2"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/view_badge"
-            android:layout_width="@dimen/size_12"
-            android:layout_height="@dimen/size_12"
-            android:layout_marginTop="@dimen/size_2"
-            android:background="@drawable/bg_circler_tab"
-            android:fontFamily="@font/sf_regular_400"
-            android:gravity="center"
-            android:singleLine="true"
-            android:textColor="@color/color_white"
-            android:textSize="@dimen/_6sdp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/imgIconTab"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/notification_badge"
-            android:layout_width="@dimen/size_13"
-            android:layout_height="@dimen/size_13"
-            android:layout_marginTop="@dimen/size_2"
-            android:background="@drawable/bg_circler_tab"
-            android:fontFamily="@font/sf_regular_400"
+            android:id="@+id/tvIconTab"
+            style="@style/TextSF14TitleRegular400"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:singleLine="true"
-            android:textColor="@color/color_white"
-            android:textSize="@dimen/_4sdp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/imgIconTab"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible"
-            android:text="99+"
-            tools:text="99+"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvIconTab"
-            style="@style/Text14TitleRegular400"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trang chủ"
+            android:lines="1"
             android:textColor="@color/active"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="9dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgIconTab" />

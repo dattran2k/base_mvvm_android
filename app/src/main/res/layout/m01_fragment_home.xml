@@ -8,8 +8,9 @@
     android:orientation="vertical"
     tools:context=".presentation.view.main.m01_home.M01HomeFragment">
 
-    <TextView
-        style="@style/Text14TitleRegular400"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv"
+        style="@style/TextSF14TitleRegular400"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/_16sdp"

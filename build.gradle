@@ -10,13 +10,11 @@ buildscript{
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
-        classpath 'com.google.gms:google-services:4.3.13'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.1'
+        classpath 'com.google.gms:google-services:4.3.14'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.2'
         //hilt for di
         ext.hilt_version = '2.41'
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
-        def nav_version = "2.5.1"
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
     }
 }
 allprojects {
@@ -25,6 +23,12 @@ allprojects {
         maven { url "https://maven.google.com" }
         jcenter()
         mavenCentral()
+        maven {
+            url 'https://jrepo.sohatv.vn/artifactory/MysohaSDK'
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
     }
     tasks.withType(Javadoc) {
         options.addStringOption('Xdoclint:none', '-quiet')

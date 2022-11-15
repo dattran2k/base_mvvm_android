@@ -18,18 +18,18 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="0dp"
-        android:layout_height="@dimen/size_height_tab"
+        android:layout_height="wrap_content"
+        android:elevation="25dp"
+        android:fadeScrollbars="true"
+        app:itemIconTint="@drawable/bottom_nav_item_color"
+        app:itemTextColor="@drawable/bottom_nav_item_color"
+        app:labelVisibilityMode="labeled"
+        app:tabGravity="fill"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pager"
-        app:labelVisibilityMode="labeled"
-        android:fadeScrollbars="true"
-        app:itemIconTint="@drawable/bottom_nav_item_color"
-        app:itemTextColor="@drawable/bottom_nav_item_color"
         app:tabIndicatorHeight="0dp"
-        android:elevation="25dp"
-        app:tabMode="fixed"
-        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-        app:tabSelectedTextColor="@color/primary" />
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed" />
 </androidx.constraintlayout.widget.ConstraintLayout>
