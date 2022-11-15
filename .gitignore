@@ -15,4 +15,3 @@ keystore.jks
 
 /app/src/test/
 /app/src/androidTest/
-/gradle/wrapper/
