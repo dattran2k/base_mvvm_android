@@ -8,7 +8,7 @@ class PreferenceHelper {
 
     var preferences: SharedPreferences? = null
     fun init(context: Context) {
-        preferences = context.getSharedPreferences("vcc.thth", Context.MODE_PRIVATE)
+        preferences = context.getSharedPreferences("news.thanhnien", Context.MODE_PRIVATE)
 
     }
 
