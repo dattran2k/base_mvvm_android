@@ -13,7 +13,7 @@
     </style>
 
     <style name="TextSF10TitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_8ssp</item>
         <item name="android:textColor">@color/title</item>
     </style>
@@ -37,7 +37,7 @@
     </style>
 
     <style name="TextSF12TitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_9ssp</item>
         <item name="android:textColor">@color/title</item>
     </style>
@@ -61,7 +61,7 @@
     </style>
 
     <style name="TextSF13TitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_10ssp</item>
         <item name="android:textColor">@color/title</item>
     </style>
@@ -91,7 +91,7 @@
     </style>
 
     <style name="TextSF14TitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_11ssp</item>
         <item name="android:textColor">@color/title</item>
     </style>
@@ -115,7 +115,7 @@
     </style>
 
     <style name="TextSF16TitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_12ssp</item>
         <item name="android:textColor">@color/title</item>
     </style>
@@ -139,7 +139,7 @@
     </style>
 
     <style name="TextSF18TitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_14ssp</item>
         <item name="android:textColor">@color/title</item>
     </style>
@@ -169,7 +169,7 @@
     </style>
 
     <style name="TextSF20TitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_16ssp</item>
         <item name="android:textColor">@color/title</item>
     </style>
@@ -193,7 +193,7 @@
     </style>
 
     <style name="TextSF24TitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_19ssp</item>
         <item name="android:textColor">@color/title</item>
     </style>
@@ -217,7 +217,7 @@
     </style>
 
     <style name="TextSF10SubTitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_8ssp</item>
         <item name="android:textColor">@color/subtitle</item>
     </style>
@@ -247,7 +247,7 @@
     </style>
 
     <style name="TextSF12SubTitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_9ssp</item>
         <item name="android:textColor">@color/subtitle</item>
     </style>
@@ -271,7 +271,7 @@
     </style>
 
     <style name="TextSF14SubTitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_11ssp</item>
         <item name="android:textColor">@color/subtitle</item>
     </style>
@@ -284,7 +284,7 @@
     </style>
 
     <style name="TextSF15SubTitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_11ssp</item>
         <item name="android:textColor">@color/subtitle</item>
     </style>
@@ -314,7 +314,7 @@
     </style>
 
     <style name="TextSF16SubTitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_12ssp</item>
         <item name="android:textColor">@color/subtitle</item>
     </style>
@@ -338,7 +338,7 @@
     </style>
 
     <style name="TextSF18SubTitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_14ssp</item>
         <item name="android:textColor">@color/subtitle</item>
     </style>
@@ -362,7 +362,7 @@
     </style>
 
     <style name="TextSF20SubTitleSemiBold600">
-        <item name="android:fontFamily">@font/sf_semibold_600</item>
+        <item name="android:fontFamily">@font/sf_semi_bold_600</item>
         <item name="android:textSize">@dimen/_16ssp</item>
         <item name="android:textColor">@color/subtitle</item>
     </style>

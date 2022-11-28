@@ -32,14 +32,14 @@ object Utility {
             imageView.setImageResource(R.mipmap.ic_launcher_round)
             return
         }
-        val resq = RequestOptions()
+        val request = RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .skipMemoryCache(true)
             .centerCrop()
             .transforms(
                 CenterCrop(), RoundedCorners(radius)
             )
-        Glide.with(context).load(imageUrl).apply(resq)
+        Glide.with(context).load(imageUrl).apply(request)
             .error(R.mipmap.ic_launcher_round).into(imageView)
     }
 

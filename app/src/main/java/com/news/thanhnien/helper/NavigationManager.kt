@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.news.thanhnien.R
+import com.news.thanhnien.presentation.view.main.M00MainFragment
+import com.news.thanhnien.presentation.view.main.m01_home.M01HomeFragment
 import timber.log.Timber
 
 class NavigationManager() :
@@ -107,6 +109,7 @@ class NavigationManager() :
         if (getCurrentFragment() == null) return
         val fragment: Fragment? = getCurrentFragment()
         Timber.e(fragment.toString())
+
     }
 
 }
