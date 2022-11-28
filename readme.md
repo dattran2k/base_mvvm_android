@@ -1,7 +1,7 @@
 -    Các công nghệ
      - Coroutines
      - Retrofit
-     - Navigation Component
+     - Navigation manager
 
 
 - Sử dụng theo mã code để định danh fragment , hỗ trợ việc tìm kiếm
@@ -15,7 +15,6 @@
 - Khi sử dụng text view thì nên sử dụng theme đã tạo, nếu ko có cái cần dùng thì tạo tương tự trong theme
 
 - project structor
-     - pega
     -  base -> Mọi thứ base
     -  common -> Constants cần thiết, và các extention
     -  di -> dependency injection , chứa các module khởi tạo retrofit, preference,...
