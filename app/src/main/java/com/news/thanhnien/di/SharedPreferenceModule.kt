@@ -15,6 +15,6 @@ class SharedPreferenceModule {
     @Singleton
     @Provides
     fun providesSharedPreference(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences("vcc.pega", Context.MODE_PRIVATE)
+        return context.getSharedPreferences("news.thanhnien", Context.MODE_PRIVATE)
     }
 }
