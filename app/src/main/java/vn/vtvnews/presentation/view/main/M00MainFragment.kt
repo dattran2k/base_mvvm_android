@@ -7,11 +7,11 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import vn.vtvnews.R
 import vn.vtvnews.base.BaseFragment
-import vn.vtvnews.common.Constants.TabHome.DISCOVER
-import vn.vtvnews.common.Constants.TabHome.HOME
-import vn.vtvnews.common.Constants.TabHome.NOTIFICATION
-import vn.vtvnews.common.Constants.TabHome.TREND
-import vn.vtvnews.common.Constants.TabHome.USER
+import vn.vtvnews.common.Constants.TabHome.TAB_DISCOVER_POSITION
+import vn.vtvnews.common.Constants.TabHome.TAB_HOME_POSITION
+import vn.vtvnews.common.Constants.TabHome.TAB_NOTIFICATION_POSITION
+import vn.vtvnews.common.Constants.TabHome.TAB_TREND_POSITION
+import vn.vtvnews.common.Constants.TabHome.TAB_USER_USER_POSITION
 import vn.vtvnews.databinding.M00FragmentMainBinding
 import vn.vtvnews.presentation.view.main.m01_home.M01HomeFragment
 import vn.vtvnews.presentation.view.main.m02_trend.M02TrendFragment
@@ -65,11 +65,11 @@ class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBind
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 (tab?.customView as CustomTab).isSelected = true
                 when (tab.position) {
-                    HOME -> {}
-                    TREND -> {}
-                    DISCOVER -> {}
-                    NOTIFICATION -> {}
-                    USER -> {}
+                    TAB_HOME_POSITION -> {}
+                    TAB_TREND_POSITION -> {}
+                    TAB_DISCOVER_POSITION -> {}
+                    TAB_NOTIFICATION_POSITION -> {}
+                    TAB_USER_USER_POSITION -> {}
                 }
 
             }
@@ -80,11 +80,11 @@ class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBind
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    HOME -> {}
-                    TREND -> {}
-                    DISCOVER -> {}
-                    NOTIFICATION -> {}
-                    USER -> {}
+                    TAB_HOME_POSITION -> {}
+                    TAB_TREND_POSITION -> {}
+                    TAB_DISCOVER_POSITION -> {}
+                    TAB_NOTIFICATION_POSITION -> {}
+                    TAB_USER_USER_POSITION -> {}
                 }
             }
 
@@ -124,5 +124,16 @@ class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBind
     @Subscribe
     fun eventMain(data: String) {
 
+    }
+
+    fun backToHome() {
+        try {
+            if (binding.pager.currentItem != TAB_HOME_POSITION) {
+                binding.pager.setCurrentItem(TAB_HOME_POSITION,false)
+//                binding.tabLayout.getTabAt(HOME_POSITION)?.select()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

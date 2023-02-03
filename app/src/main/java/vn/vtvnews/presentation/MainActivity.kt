@@ -17,12 +17,10 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = M00ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initDestinationChange()
         DialogSnackBarUtils.init(this)
         NavigationManager.getInstance().init(this,supportFragmentManager, R.id.fragment_container)
     }
 
-    private fun initDestinationChange() {
-    }
+
 
 }

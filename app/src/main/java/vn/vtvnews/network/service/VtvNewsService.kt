@@ -6,7 +6,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface PegaService {
+interface VtvNewsService {
     @GET(Endpoint.GET_HABIT_SITES)
     suspend fun getHabitSite(
         @Query("deviceid") deviceId: String,

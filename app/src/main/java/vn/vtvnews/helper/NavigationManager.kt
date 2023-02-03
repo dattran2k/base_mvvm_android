@@ -2,6 +2,8 @@ package vn.vtvnews.helper
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.os.Handler
+import android.os.Looper
 import androidx.annotation.AnimRes
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
@@ -9,6 +11,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import vn.vtvnews.R
 import timber.log.Timber
+import vn.vtvnews.presentation.view.main.M00MainFragment
 
 class NavigationManager() :
     FragmentManager.OnBackStackChangedListener {
@@ -16,6 +19,8 @@ class NavigationManager() :
     protected lateinit var mFragmentManager: FragmentManager
     private var mContentId: Int? = null
     private var lastFm = ""
+    var navigateAble = true
+    val handlerNavigate = Handler(Looper.getMainLooper())
 
     companion object {
         fun getInstance(): NavigationManager = NavigationManagerHolder.navigationManagerHolder
@@ -44,6 +49,25 @@ class NavigationManager() :
         mActivity.onBackPressed()
     }
 
+    fun popToHome() {
+        if (mFragmentManager.backStackEntryCount > 0) {
+            val homeFragmentId = mFragmentManager.getBackStackEntryAt(0).id
+            mFragmentManager.popBackStack(
+                homeFragmentId,
+                FragmentManager.POP_BACK_STACK_INCLUSIVE
+            )
+            mFragmentManager.fragments.forEach {
+                val findMainFragment = it
+                if (findMainFragment is M00MainFragment) {
+                    findMainFragment.backToHome()
+                    return@forEach
+                }
+            }
+        } else {
+            popBackStack()
+        }
+    }
+
     fun openFragment(
         fragment: Fragment,
         isReplace: Boolean = false,
@@ -53,23 +77,30 @@ class NavigationManager() :
         @AnimRes popExit: Int
     ) {
         try {
+            if (!navigateAble)
+                return
             mFragmentManager.commit {
-                if (enter > 0 || exit > 0 || popEnter > 0 || popExit > 0) {
+                if (enter != 0 || exit != 0 || popEnter != 0 || popExit != 0) {
                     setCustomAnimations(enter, exit, popEnter, popExit)
                 }
                 mContentId?.let {
                     if (isReplace)
                         replace(it, fragment)
                     else
-                        add(it, fragment)
+                        add(it, fragment, fragment::class.simpleName)
 
                 }
                 addToBackStack((2147483646.0 * Math.random()).toInt().toString())
+                navigateAble = false
+                handlerNavigate.postDelayed(
+                    { navigateAble = true }, 1000
+                )
             }
         } catch (e: Exception) {
-            e.stackTrace
+            e.printStackTrace()
         }
     }
+
     fun openFragment(
         fragment: Fragment,
         isReplace: Boolean = false,
@@ -82,6 +113,7 @@ class NavigationManager() :
             R.anim.slide_out_right
         )
     }
+
     fun openFragmentBottomUp(
         fragment: Fragment,
         isReplace: Boolean = false,
@@ -90,10 +122,11 @@ class NavigationManager() :
             fragment, isReplace,
             R.anim.slide_in_up,
             R.anim.opacity_1_to_0,
-           0,
+            0,
             R.anim.slide_out_down
         )
     }
+
     fun getCurrentFragment(): Fragment? {
         return try {
             mContentId?.let { mFragmentManager.findFragmentById(it) }
@@ -107,7 +140,15 @@ class NavigationManager() :
         if (getCurrentFragment() == null) return
         val fragment: Fragment? = getCurrentFragment()
         Timber.e(fragment.toString())
+        Timber.d("dev_code check $fragment")
+        try {
+            when (fragment) {
 
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
+
 
 }

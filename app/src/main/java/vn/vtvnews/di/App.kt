@@ -13,6 +13,12 @@ import timber.log.Timber
 
 @HiltAndroidApp
 class App : Application() {
+    private object AppHolder {
+        val appHolder = App()
+    }
+    companion object {
+        fun getInstance() = AppHolder.appHolder
+    }
     override fun onCreate() {
         super.onCreate()
         PreferenceHelper.getInstance().init(this)

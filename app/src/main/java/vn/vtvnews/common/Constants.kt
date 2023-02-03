@@ -4,11 +4,11 @@ object Constants {
     const val FLAVOR_DEVELOP = "development"
     const val FLAVOR_PRODUCT = "production"
     object TabHome {
-        const val HOME = 0
-        const val TREND = 1
-        const val DISCOVER = 2
-        const val NOTIFICATION = 3
-        const val USER = 4
+        const val TAB_HOME_POSITION = 0
+        const val TAB_TREND_POSITION = 1
+        const val TAB_DISCOVER_POSITION = 2
+        const val TAB_NOTIFICATION_POSITION = 3
+        const val TAB_USER_USER_POSITION = 4
     }
 
     object Preference {

@@ -10,7 +10,7 @@ import vn.vtvnews.common.Constants
 import vn.vtvnews.common.Constants.Preference.PREFUSER_ID
 import vn.vtvnews.common.HeaderRetrofitEnum
 import vn.vtvnews.helper.Utility
-import vn.vtvnews.network.service.PegaService
+import vn.vtvnews.network.service.VtvNewsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -81,8 +81,8 @@ class RetrofitServiceModule {
     }
     @Provides
     @Singleton
-    fun providePegaService(@Named(Constants.Inject.API) retrofit: Retrofit): PegaService =
-        retrofit.create(PegaService::class.java)
+    fun providePegaService(@Named(Constants.Inject.API) retrofit: Retrofit): VtvNewsService =
+        retrofit.create(VtvNewsService::class.java)
 
 }
 
