@@ -1,2 +1,2 @@
-rootProject.name = "ThanhNien"
+rootProject.name = "VTVNews"
 include ':app'

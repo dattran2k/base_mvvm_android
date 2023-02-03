@@ -22,7 +22,7 @@
 
 
 
--keep class com.news.thanhnien.model.** {*;}
+-keep class vn.vtvnews.model.** {*;}
 -keepattributes *Annotation*
 
 -keepclassmembers class ** {

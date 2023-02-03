@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.news.thanhnien">
+    package="vn.vtvnews">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.news.thanhnien.di.App"
+        android:name="vn.vtvnews.di.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,7 +21,7 @@
         tools:replace="android:networkSecurityConfig,android:label"
         tools:targetApi="31">
         <activity
-            android:name="com.news.thanhnien.presentation.SplashActivity"
+            android:name="vn.vtvnews.presentation.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.thanh_nien.Splash">
             <intent-filter>
@@ -34,7 +34,7 @@
         </activity>
 
         <activity
-            android:name="com.news.thanhnien.presentation.MainActivity"
+            android:name="vn.vtvnews.presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.thanh_nien" />

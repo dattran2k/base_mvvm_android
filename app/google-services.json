@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:721433572935:android:736e687c6989cdbff0e362",
         "android_client_info": {
-          "package_name": "com.news.thanhnien"
+          "package_name": "vn.vtvnews"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "721433572935-1pagcivu40fb82pul018dqi3lu68umpo.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.news.thanhnien",
+            "package_name": "vn.vtvnews",
             "certificate_hash": "259f27b649ffac8570aa6d6b1fd9b623d6e02977"
           }
         },
