@@ -19,7 +19,7 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:overScrollMode">never</item>
-        <item name="android:windowBackground">@drawable/img_splash</item>
+        <item name="android:windowBackground">@color/color_white</item>
         <item name="windowNoTitle">true</item>
     </style>
     <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
