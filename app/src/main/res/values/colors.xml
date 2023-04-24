@@ -4,41 +4,13 @@
     <color name="primary">#1F9FFC</color>
     <color name="active">#1F9FFC</color>
     <color name="color_app">@color/primary</color>
-    <color name="gray_666">#666666</color>
-    <color name="gray_c4">#C4C4C4</color>
-    <color name="gray_8a">#8A8A8A</color>
-    <color name="gray_8e">#8E8E8E</color>
-    <color name="gray_61">#616161</color>
-    <color name="gray_e5">#E5E5E5</color>
-    <color name="gray_f1">#F1F1F1</color>
-    <color name="gray_b8">#B8B6B6</color>
-    <color name="gray">#ffc5c5c5</color>
-    <color name="gray_EBEB_30">#4DEBEBEB</color>
-    <color name="gray_EBEB">#EBEBEB</color>
-    <color name="gray_35">#353535</color>
-    <color name="black_16">#161616</color>
-
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="color_white">#FFFFFF</color>
     <color name="black">#FF000000</color>
-    <color name="color_white">#FFFFFFFF</color>
-    <color name="grey_8a">#8A8A8A</color>
-    <color name="grey_8e">#8E8E8E</color>
-    <color name="grey_61">#616161</color>
-    <color name="green_e">#EEEEEE</color>
-    <color name="blue_1f">#1F9FFC</color>
-    <color name="grey_35">#353535</color>
-
-
     <color name="black_45">#454545</color>
-
-    // text color
-    <color name="title">@color/black</color>
-    <color name="subtitle">@color/grey_8a</color>
+    <color name="gray_8a">#8A8A8A</color>
     <color name="color_red">#F52943</color>
+    <color name="gray_666">#666666</color>
+    // text color
     <color name="color_subtitle">@color/gray_8a</color>
     <color name="color_title">@color/black_45</color>
 

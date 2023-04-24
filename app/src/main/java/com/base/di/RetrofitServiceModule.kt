@@ -10,7 +10,7 @@ import com.base.common.Constants
 import com.base.common.Constants.Preference.PREFUSER_ID
 import com.base.common.HeaderRetrofitEnum
 import com.base.helper.Utility
-import com.base.network.service.DemoService
+import com.base.model.network.service.DemoService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,21 +32,11 @@ class RetrofitServiceModule {
 
     private fun getHttpClient(
         context: Context,
-        preferenceHelper: SharedPreferences,
-        headerRetrofitEnum: HeaderRetrofitEnum = HeaderRetrofitEnum.NONE
     ): OkHttpClient {
-        val deviceId = Utility.getDeviceId(context)
-        val userId = preferenceHelper.getString(PREFUSER_ID, "-1") ?: "-1"
         return OkHttpClient.Builder().also { client ->
             client.retryOnConnectionFailure(true)
             client.addInterceptor {
-                val newRequest = it.request().newBuilder().apply {
-                    addHeader("user-id", userId)
-                    if (headerRetrofitEnum == HeaderRetrofitEnum.NOTIFICATION)
-                        addHeader("session-id", deviceId)
-                    else
-                        addHeader("device-id", deviceId)
-                }.build()
+                val newRequest = it.request().newBuilder().build()
                 it.proceed(newRequest)
             }
             if (BuildConfig.DEBUG) {
@@ -58,8 +48,8 @@ class RetrofitServiceModule {
                 client.interceptors().add(logging)
                 client.interceptors().add(loggingContent)
             }
-            client.connectTimeout(120, TimeUnit.SECONDS)
-            client.readTimeout(120, TimeUnit.SECONDS)
+            client.connectTimeout(30, TimeUnit.SECONDS)
+            client.readTimeout(30, TimeUnit.SECONDS)
             client.protocols(Collections.singletonList(Protocol.HTTP_1_1))
         }.build()
     }
@@ -70,11 +60,10 @@ class RetrofitServiceModule {
     fun providePegaRetrofit(
         gson: Gson,
         context: Context,
-        preferences: SharedPreferences
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
-            .client(getHttpClient(context, preferences))
+            .client(getHttpClient(context))
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

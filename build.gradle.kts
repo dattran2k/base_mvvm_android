@@ -13,7 +13,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter()
         maven("https://maven.google.com")
         maven("https://jitpack.io")
 

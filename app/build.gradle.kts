@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 import java.util.Calendar
 import java.text.SimpleDateFormat
 
@@ -84,7 +85,6 @@ android {
             manifestPlaceholders["appLabel"] = "Base"
             versionNameSuffix = "-production"
             buildConfigField("String", "BASE_URL", "\"https://demo.com/\"")
-
         }
     }
 
@@ -93,26 +93,22 @@ android {
 dependencies {
 
     implementation(libs.androidx.core)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.material)
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.multidex:multidex:2.0.1")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
-    val nav_version = "2.5.3"
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     // testing
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.test.espresso)
 
     implementation(libs.androidx.activity.activity)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.livedata)
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     // firebase
     implementation(platform(libs.firebase.bom))
@@ -123,25 +119,21 @@ dependencies {
     // hilt
     implementation(libs.dagger.hilt.library)
     kapt(libs.dagger.hilt.compiler)
-    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 
     // dimension
     implementation("com.intuit.sdp:sdp-android:1.1.0")
     implementation("com.intuit.ssp:ssp-android:1.1.0")
     // api
-    val retrofit = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofit")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofit")
-    implementation("com.squareup.retrofit2:converter-scalars:$retrofit")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.json)
+    implementation(libs.retrofit.converter.scalars)
+    implementation(libs.okhttp3)
+    implementation(libs.okhttp3.logging.interceptor)
     // Timber
     implementation(libs.timber)
     // chucker
     debugImplementation(libs.chucker)
     releaseImplementation(libs.chucker.release)
     //Glide
-    val glide = "4.13.2"
-    implementation("com.github.bumptech.glide:glide:$glide")
-
-
+    implementation(libs.glide)
 }

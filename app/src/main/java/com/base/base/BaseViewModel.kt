@@ -2,12 +2,10 @@ package com.base.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.base.network.ApiResponseData
-import com.base.network.Resource
+import com.base.model.network.Resource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import java.util.*
 
 open class BaseViewModel : ViewModel() {
@@ -26,10 +24,12 @@ open class BaseViewModel : ViewModel() {
             CommonState.Error(response.message)
         }
     }
-
-    suspend fun <R : Any> MutableStateFlow<CommonState<R>>.updateCommonState(
-        flow: Flow<Resource<R>>,
-        delayTime: Int = 0,
+    /**
+    * An extension function for some default situation
+     * First . Emit "LOADING"
+     * Second : Check data and status of response, emit "SUCCESS" other wise "ERROR"
+    */
+    suspend fun <R : Any> MutableStateFlow<CommonState<R>>.updateCommonState(flow: Flow<Resource<R>>, delayTime: Int = 0,
     ) {
         val startTime = getCurrentTime()
         value = CommonState.Loading()

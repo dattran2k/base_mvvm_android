@@ -1,7 +1,7 @@
-package com.base.network.data_source
+package com.base.model.network.data_source
 
 import android.content.Context
-import com.base.network.service.DemoService
+import com.base.model.network.service.DemoService
 import javax.inject.Inject
 
 class ApiDataSource @Inject constructor(

@@ -1,10 +1,9 @@
-package com.base.network.service
+package com.base.model.network.service
 
-import com.base.network.ApiResponseData
-import com.base.network.Endpoint
+import com.base.model.network.ApiResponseData
+import com.base.model.network.Endpoint
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface DemoService {
     @GET(Endpoint.GET_DEMO)

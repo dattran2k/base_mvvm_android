@@ -395,11 +395,6 @@
         <item name="android:windowMinWidthMinor">66%</item>
     </style>
 
-    <style name="line">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/gray_EBEB</item>
-    </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -407,7 +402,7 @@
         <item name="colorPrimaryDark">@color/color_app</item>
         <item name="colorAccent">@color/color_app</item>
         <item name="android:windowDisablePreview">true</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
     <style name="AppTheme.Blue" parent="AppTheme">
@@ -432,7 +427,4 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="imageCircle">
-        <item name="cornerSize">50%</item>
-    </style>
 </resources>

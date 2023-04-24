@@ -27,29 +27,11 @@ object Utility {
         }
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
-    fun setImage(context: Context, imageView: ImageView, imageUrl: String?, radius: Int = 1) {
-        if (imageUrl.isNullOrBlank()) {
-            imageView.setImageResource(R.mipmap.ic_launcher_round)
-            return
-        }
-        val request = RequestOptions()
-            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-            .skipMemoryCache(true)
-            .centerCrop()
-            .transforms(
-                CenterCrop(), RoundedCorners(radius)
-            )
-        Glide.with(context).load(imageUrl).apply(request)
-            .error(R.mipmap.ic_launcher_round).into(imageView)
-    }
 
     @SuppressLint("HardwareIds")
     fun getDeviceId(context: Context?): String {
         return Settings.Secure.getString(context?.contentResolver, Settings.Secure.ANDROID_ID)
     }
 
-    fun gcm(a: Long, b: Long): Long {
-        return if (b == 0L) a else gcm(b, a % b)
-    }
 
 }

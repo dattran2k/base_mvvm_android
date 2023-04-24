@@ -12,7 +12,6 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.base.helper.DialogSnackBarUtils
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
@@ -41,7 +40,7 @@ abstract class BaseActivity : AppCompatActivity() {
                 }
 
                 override fun onLost(network: Network) {
-                    DialogSnackBarUtils.showDisconnectSnackBar()
+                    Timber.e("lost connect")
                 }
             })
         }
@@ -50,7 +49,7 @@ abstract class BaseActivity : AppCompatActivity() {
                 Timber.e("onBackPressed ${supportFragmentManager.backStackEntryCount}")
                 if (supportFragmentManager.backStackEntryCount== 0) {
                     if (!isBack) {
-                        Toast.makeText(this@BaseActivity, "Click 1 lần nữa để thoát app", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@BaseActivity, "Click 1 more time to back", Toast.LENGTH_LONG).show()
                         isBack = true
                         backHandler.postDelayed({
                             isBack = false

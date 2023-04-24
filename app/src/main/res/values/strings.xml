@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">pega</string>
+    <string name="app_name">Base</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="tab_home">Tin của bạn</string>
-    <string name="tab_trend">Xu hướng</string>
-    <string name="tab_discover">Khám phá</string>
-    <string name="tab_notification">Thông báo</string>
-    <string name="tab_user">Cá nhân</string>
+    <string name="tab_home">First</string>
+    <string name="tab_trend">Second</string>
+    <string name="tab_discover">Third</string>
+    <string name="tab_notification">Fourth</string>
+    <string name="tab_user">Fifth</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
