@@ -6,65 +6,49 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
+import android.net.LinkProperties
+import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkInfo
+import android.os.Build
 import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.MutableStateFlow
+import timber.log.Timber
 
-object InternetUtil : LiveData<Boolean>() {
-
-    private var broadcastReceiver: BroadcastReceiver? = null
-    private var application: Application? = null
-
+object InternetUtil {
+    var internetState = MutableStateFlow(true)
     fun init(application: Application) {
-        InternetUtil.application = application
-    }
-
-    //check if network is connected
-    fun isNetworkAvailable(): Boolean {
-        val connectivityManager = application?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val nw = connectivityManager.activeNetwork ?: return false
-        val actNw = connectivityManager.getNetworkCapabilities(nw) ?: return false
-        return when {
-            actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-            actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-            //for other device how are able to connect with Ethernet
-            actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-            //for check internet over Bluetooth
-            actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
-            else -> false
-        }
-
-    }
-
-    override fun onActive() {
-        registerBroadCastReceiver()
-    }
-
-    override fun onInactive() {
-        unRegisterBroadCastReceiver()
-    }
-
-    private fun registerBroadCastReceiver() {
-        if (broadcastReceiver == null) {
-            val filter = IntentFilter()
-            filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
-
-            broadcastReceiver = object : BroadcastReceiver() {
-                override fun onReceive(_context: Context, intent: Intent) {
-                    val extras = intent.extras
-                    val info = extras?.getParcelable<NetworkInfo>("networkInfo")
-                    value = info?.state == NetworkInfo.State.CONNECTED
+        val connectivityManager = application.getSystemService(ConnectivityManager::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            connectivityManager.registerDefaultNetworkCallback(object : ConnectivityManager.NetworkCallback() {
+                override fun onAvailable(network: Network) {
+                    Timber.e("The default network is now: $network")
+                    connectivityManager.getNetworkCapabilities(network)?.let {
+                        internetState.value = when {
+                            it.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                            it.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                            //for other device how are able to connect with Ethernet
+                            it.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                            //for check internet over Bluetooth
+                            it.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
+                            else -> false
+                        }
+                    }
                 }
-            }
 
-            application?.registerReceiver(broadcastReceiver, filter)
+                override fun onLost(network: Network) {
+                    Timber.e("The application no longer has a default network. The last default network was $network")
+                }
+
+                override fun onCapabilitiesChanged(network: Network, networkCapabilities: NetworkCapabilities) {
+                    Timber.e("The default network changed capabilities: $networkCapabilities")
+                }
+
+                override fun onLinkPropertiesChanged(network: Network, linkProperties: LinkProperties) {
+                    Timber.e("The default network changed link properties: $linkProperties")
+                }
+            })
         }
     }
-
-    private fun unRegisterBroadCastReceiver() {
-        if (broadcastReceiver != null) {
-            application?.unregisterReceiver(broadcastReceiver)
-            broadcastReceiver = null
-        }
-    }
+    fun isNetworkAvailable() = internetState.value
 }

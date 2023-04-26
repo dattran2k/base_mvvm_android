@@ -16,7 +16,7 @@ import timber.log.Timber
 
 abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layoutInflater: LayoutInflater) -> T) :
     Fragment() {
-    protected var isConnected: Boolean = false
+
     var _binding: T? = null
     protected val binding get() = _binding!!
     protected var isReady = _binding != null
@@ -34,11 +34,6 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Timber.d("$TAG onViewCreated")
-        InternetUtil.observe(viewLifecycleOwner) {
-            it?.let {
-                isConnected = it
-            }
-        }
         initView()
         initObserver()
         if (isInitGetData())

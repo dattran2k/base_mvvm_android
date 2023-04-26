@@ -22,7 +22,6 @@ fun getDate(): String {
     return SimpleDateFormat(format).format(current)
 }
 android {
-
     namespace = "com.base"
     defaultConfig {
         applicationId  = "com.base"
