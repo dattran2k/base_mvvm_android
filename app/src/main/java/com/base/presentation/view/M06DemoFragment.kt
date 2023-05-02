@@ -1,9 +1,8 @@
 package com.base.presentation.view
 
-import com.base.base.BaseFragment
+import com.base.presentation.base.BaseFragment
 import com.base.databinding.M06FragmentDemoBinding
-import com.base.helper.NavigationManager
-import com.base.helper.Utility
+import com.base.util.NavigationManager
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 

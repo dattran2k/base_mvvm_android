@@ -1,4 +1,4 @@
-package com.base.base
+package com.base.presentation.base
 
 
 sealed class CommonState<out T : Any> private constructor() {

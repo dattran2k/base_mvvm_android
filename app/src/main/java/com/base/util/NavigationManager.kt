@@ -1,4 +1,4 @@
-package com.base.helper
+package com.base.util
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -10,13 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.base.R
-import timber.log.Timber
 import com.base.presentation.view.main.M00MainFragment
 
 class NavigationManager :
     FragmentManager.OnBackStackChangedListener {
-    protected lateinit var mActivity: Activity
-    protected lateinit var mFragmentManager: FragmentManager
+
+    lateinit var mFragmentManager: FragmentManager
     private var mContentId: Int? = null
     var navigateAble = true
     val handlerNavigate = Handler(Looper.getMainLooper())
@@ -26,12 +25,10 @@ class NavigationManager :
     }
 
     private object NavigationManagerHolder {
-        @SuppressLint("StaticFieldLeak")
         val navigationManagerHolder = NavigationManager()
     }
 
-    fun init(activity: Activity, fragmentManager: FragmentManager, @IdRes contentId: Int) {
-        mActivity = activity
+    fun init(fragmentManager: FragmentManager, @IdRes contentId: Int) {
         mFragmentManager = fragmentManager
         mContentId = contentId
         mFragmentManager.addOnBackStackChangedListener(this)
@@ -45,7 +42,7 @@ class NavigationManager :
     fun isRoot() = mFragmentManager.backStackEntryCount <= 1
 
     fun popBackStack() {
-        mActivity.onBackPressed()
+        mFragmentManager.popBackStack()
     }
 
     fun popToHome() {
@@ -130,7 +127,7 @@ class NavigationManager :
         return try {
             mContentId?.let { mFragmentManager.findFragmentById(it) }
         } catch (e: Exception) {
-            e.stackTrace
+            e.printStackTrace()
             null
         }
     }
@@ -140,9 +137,7 @@ class NavigationManager :
         val fragment: Fragment? = getCurrentFragment()
 
         try {
-            when (fragment) {
 
-            }
         } catch (e: Exception) {
             e.printStackTrace()
         }

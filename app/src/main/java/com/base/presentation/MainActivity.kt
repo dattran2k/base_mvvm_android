@@ -2,10 +2,10 @@ package com.base.presentation
 
 import android.os.Bundle
 import com.base.R
-import com.base.base.BaseActivity
+import com.base.presentation.base.BaseActivity
 import com.base.databinding.M00ActivityMainBinding
 
-import com.base.helper.NavigationManager
+import com.base.util.NavigationManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,9 +17,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = M00ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        NavigationManager.getInstance().init(this,supportFragmentManager, R.id.fragment_container)
+        NavigationManager.getInstance().init(supportFragmentManager, R.id.fragment_container)
     }
-
-
 
 }

@@ -8,8 +8,6 @@ import javax.inject.Inject
 
 class HomeRepository @Inject constructor(private val apiDataSource: ApiDataSource) {
 
-    suspend fun getHabitSites() = flow {
-        emit(apiDataSource.getDemo())
-    }.flowOn(Dispatchers.IO)
+
 }
 

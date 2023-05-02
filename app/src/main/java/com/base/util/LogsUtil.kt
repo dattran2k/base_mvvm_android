@@ -1,4 +1,4 @@
-package com.base.helper
+package com.base.util
 
 import timber.log.Timber
 

@@ -1,15 +1,11 @@
 package com.base.di
 
 import android.content.Context
-import android.content.SharedPreferences
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
 import com.base.BuildConfig
 import com.base.common.Constants
-import com.base.common.Constants.Preference.PREFUSER_ID
-import com.base.common.HeaderRetrofitEnum
-import com.base.helper.Utility
 import com.base.model.network.service.DemoService
 import dagger.Module
 import dagger.Provides

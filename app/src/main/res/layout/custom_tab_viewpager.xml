@@ -15,19 +15,19 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgIconTab"
+            android:id="@+id/im_icon"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_marginTop="@dimen/size_2"
-            app:tint="@color/active"
             android:padding="@dimen/size_2"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/active" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvIconTab"
+            android:id="@+id/tv_title"
             style="@style/TextSF14TitleRegular400"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,6 +39,6 @@
             android:textSize="9dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgIconTab" />
+            app:layout_constraintTop_toBottomOf="@+id/im_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

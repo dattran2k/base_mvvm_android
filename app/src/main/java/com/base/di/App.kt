@@ -5,9 +5,9 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.base.BuildConfig
 import com.base.common.Constants
-import com.base.helper.InternetUtil
-import com.base.helper.LogsUtil
-import com.base.helper.PreferenceHelper
+import com.base.util.InternetUtil
+import com.base.util.LogsUtil
+import com.base.util.PreferenceHelper
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 

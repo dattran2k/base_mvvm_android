@@ -1,17 +1,11 @@
-package com.base.helper
+package com.base.util
 
 import android.app.Application
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.LinkProperties
 import android.net.Network
 import android.net.NetworkCapabilities
-import android.net.NetworkInfo
 import android.os.Build
-import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.MutableStateFlow
 import timber.log.Timber
 

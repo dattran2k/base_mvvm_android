@@ -1,16 +1,12 @@
 package com.base.presentation.view.main.m01_home
 
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import com.base.base.BaseFragment
-import com.base.base.CommonState
+import com.base.presentation.base.BaseFragment
+import com.base.presentation.base.CommonState
 import com.base.databinding.M01FragmentHomeBinding
-import com.base.helper.NavigationManager
+import com.base.util.NavigationManager
 import com.base.presentation.view.M06DemoFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
 @AndroidEntryPoint

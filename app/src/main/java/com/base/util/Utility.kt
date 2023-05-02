@@ -1,4 +1,4 @@
-package com.base.helper
+package com.base.util
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -6,13 +6,6 @@ import android.content.Context
 import android.provider.Settings
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
-import com.base.R
 
 object Utility {
     //hide keyboard

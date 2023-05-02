@@ -1,4 +1,4 @@
-package com.base.base
+package com.base.presentation.base
 
 import android.content.Context
 import android.content.Intent
@@ -12,7 +12,13 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.base.util.InternetUtil
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -20,9 +26,7 @@ import javax.inject.Inject
 abstract class BaseActivity : AppCompatActivity() {
     companion object {
         const val TIME = 5000L
-
     }
-
     var isBack = false
     var backHandler = Handler(Looper.getMainLooper())
 
@@ -31,19 +35,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            connectivityManager.registerDefaultNetworkCallback(object :
-                ConnectivityManager.NetworkCallback() {
-                override fun onAvailable(network: Network) {
-
-                }
-
-                override fun onLost(network: Network) {
-                    Timber.e("lost connect")
-                }
-            })
-        }
+        initListenInternet()
         onBackPressedDispatcher.addCallback(this , object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 Timber.e("onBackPressed ${supportFragmentManager.backStackEntryCount}")
@@ -62,6 +54,16 @@ abstract class BaseActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun initListenInternet() {
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
+                InternetUtil.internetState.collect {
+                    Timber.i("Internet enable = $it")
+                }
+            }
+        }
     }
 
     override fun onDestroy() {

@@ -1,26 +1,21 @@
-package com.base.helper
+package com.base.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.base.BuildConfig
 import com.base.common.Constants
 
 class PreferenceHelper {
-
     var preferences: SharedPreferences? = null
     fun init(context: Context) {
-        preferences = context.getSharedPreferences("news.thanhnien", Context.MODE_PRIVATE)
-
+        preferences = context.getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
     }
-
     companion object {
         fun getInstance(): PreferenceHelper = PreferenceHolder.preferenceHelper
     }
-
     private object PreferenceHolder {
         val preferenceHelper = PreferenceHelper()
     }
-
-
     private inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {
         val editor = this.edit()
         operation(editor)
@@ -61,5 +56,4 @@ class PreferenceHelper {
         return defaultValue
     }
 
-    fun getUserId() = get(Constants.Preference.PREFUSER_ID, "-1")
 }

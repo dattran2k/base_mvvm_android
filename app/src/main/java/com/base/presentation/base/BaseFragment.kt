@@ -1,4 +1,4 @@
-package com.base.base
+package com.base.presentation.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
-import com.base.helper.InternetUtil
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -57,7 +56,6 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
                 initObserverCreated()
             }
         }
-
     }
     open suspend fun initObserverCreated(){
 

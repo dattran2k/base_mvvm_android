@@ -1,20 +1,5 @@
--    Các công nghệ
-     - Coroutines
-     - Retrofit
-     - Navigation manager
-
-
-- Sử dụng theo mã code để định danh fragment , hỗ trợ việc tìm kiếm
-     - M00 : Main
-     - M01 : Home
-     - M02 : Trending
-     - M03 : Discover
-     - M04 : Notification
-     - M05 : User
-
-- Khi sử dụng text view thì nên sử dụng theme đã tạo, nếu ko có cái cần dùng thì tạo tương tự trong theme
-
-- project structor
+- Use Java 18
+- project structure
     -  base -> Mọi thứ base
     -  common -> Constants cần thiết, và các extention
     -  di -> dependency injection , chứa các module khởi tạo retrofit, preference,...

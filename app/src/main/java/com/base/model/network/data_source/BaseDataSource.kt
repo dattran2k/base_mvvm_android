@@ -1,13 +1,11 @@
 package com.base.model.network.data_source
 
 import android.content.Context
-import com.base.helper.InternetUtil
+import com.base.util.InternetUtil
 import com.base.model.network.Resource
 import retrofit2.Response
 
 abstract class BaseDataSource(private val mContext: Context) {
-
-
     suspend fun <T : Any> safeApiCall(
         apiCall: suspend () -> Response<T>,
     ): Resource<T> {
