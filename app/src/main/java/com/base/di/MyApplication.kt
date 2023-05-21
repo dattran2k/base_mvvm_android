@@ -12,19 +12,18 @@ import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 @HiltAndroidApp
-class App : Application() {
+class MyApplication : Application() {
     private object AppHolder {
-        val appHolder = App()
+        val myApplicationHolder = MyApplication()
     }
     companion object {
-        fun getInstance() = AppHolder.appHolder
+        fun getInstance() = AppHolder.myApplicationHolder
     }
     override fun onCreate() {
         super.onCreate()
         PreferenceHelper.getInstance().init(this)
         FirebaseApp.initializeApp(this)
         InternetUtil.init(this)
-
         if (BuildConfig.FLAVOR == Constants.FLAVOR_DEVELOP) {
             FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(false)
             Timber.plant(LogsUtil())

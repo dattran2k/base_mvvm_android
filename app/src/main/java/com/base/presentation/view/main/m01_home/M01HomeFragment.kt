@@ -15,18 +15,16 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
     private val viewModel: M01HomeViewModel by viewModels()
     override fun initView() {
         binding.tv.setOnClickListener {
-            NavigationManager.getInstance().openFragment(
-                M06DemoFragment(),
-                false
-            )
+            NavigationManager.getInstance().openFragment(M06DemoFragment(),)
         }
     }
 
     override suspend fun initObserverCreated() {
         viewModel.homeState.collect { state ->
-            Timber.d(state.toString())
+            Timber.e(state.toString())
             when (state) {
                 is CommonState.Init -> {
+
                 }
 
                 is CommonState.Error -> {
@@ -40,9 +38,4 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
             }
         }
     }
-
-    override fun getData() {
-        viewModel.getData()
-    }
-
 }

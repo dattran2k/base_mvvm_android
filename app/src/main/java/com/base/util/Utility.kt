@@ -21,10 +21,5 @@ object Utility {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    @SuppressLint("HardwareIds")
-    fun getDeviceId(context: Context?): String {
-        return Settings.Secure.getString(context?.contentResolver, Settings.Secure.ANDROID_ID)
-    }
-
 
 }

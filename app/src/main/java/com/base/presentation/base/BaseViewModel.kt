@@ -24,23 +24,23 @@ open class BaseViewModel : ViewModel() {
             CommonState.Error(response.message)
         }
     }
+
     /**
-    * An extension function for some default situation
+     * An extension function for some default situation
      * First . Emit "LOADING"
      * Second : Check data and status of response, emit "SUCCESS" other wise "ERROR"
-    */
-    suspend fun <R : Any> MutableStateFlow<CommonState<R>>.updateCommonState(flow: Flow<Resource<R>>, delayTime: Int = 0,
+     */
+    suspend fun <R : Any> MutableStateFlow<CommonState<R>>.updateCommonState(
+        response: Resource<R>, delayTime: Int = 0,
     ) {
         val startTime = getCurrentTime()
         value = CommonState.Loading()
-        flow.collect { response ->
-            value = if (response.status == Resource.Status.SUCCESS && response.data != null) {
-                if (delayTime > 0)
-                    delayLoadingAtLeast(startTime, getCurrentTime(), delayTime)
-                CommonState.Success(response.data)
-            } else {
-                CommonState.Error(response.message)
-            }
+        value = if (response.status == Resource.Status.SUCCESS && response.data != null) {
+            if (delayTime > 0)
+                delayLoadingAtLeast(startTime, getCurrentTime(), delayTime)
+            CommonState.Success(response.data)
+        } else {
+            CommonState.Error(response.message)
         }
     }
 }

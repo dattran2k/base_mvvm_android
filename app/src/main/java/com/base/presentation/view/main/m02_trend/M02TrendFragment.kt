@@ -13,7 +13,5 @@ class M02TrendFragment : BaseFragment<M02FragmentTrendBinding>(M02FragmentTrendB
     }
 
 
-    override fun getData() {
-
-    }
+   
 }

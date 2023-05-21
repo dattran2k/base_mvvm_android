@@ -53,9 +53,6 @@ android {
     kotlinOptions {
         jvmTarget = "18"
     }
-    buildFeatures {
-        viewBinding =  true
-    }
     packaging {
         packagingOptions.resources.excludes += setOf(
             // Exclude AndroidX version files
@@ -117,6 +114,7 @@ dependencies {
     implementation(libs.firebase.dynamic.links)
     // hilt
     implementation(libs.dagger.hilt.library)
+    // TODO ksp currently not support hilt yet. Still use kapt
     kapt(libs.dagger.hilt.compiler)
 
     // dimension

@@ -1,19 +1,17 @@
 package com.base.util
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.os.Handler
 import android.os.Looper
 import androidx.annotation.AnimRes
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentManager.OnBackStackChangedListener
 import androidx.fragment.app.commit
 import com.base.R
 import com.base.presentation.view.main.M00MainFragment
 
-class NavigationManager :
-    FragmentManager.OnBackStackChangedListener {
+class NavigationManager {
 
     lateinit var mFragmentManager: FragmentManager
     private var mContentId: Int? = null
@@ -28,10 +26,10 @@ class NavigationManager :
         val navigationManagerHolder = NavigationManager()
     }
 
-    fun init(fragmentManager: FragmentManager, @IdRes contentId: Int) {
+    fun init(fragmentManager: FragmentManager, @IdRes contentId: Int,backStackChangedListener: OnBackStackChangedListener) {
         mFragmentManager = fragmentManager
         mContentId = contentId
-        mFragmentManager.addOnBackStackChangedListener(this)
+        mFragmentManager.addOnBackStackChangedListener(backStackChangedListener)
     }
 
 
@@ -81,7 +79,7 @@ class NavigationManager :
                 }
                 mContentId?.let {
                     if (isReplace)
-                        replace(it, fragment)
+                        replace(it, fragment, fragment::class.simpleName)
                     else
                         add(it, fragment, fragment::class.simpleName)
 
@@ -89,7 +87,7 @@ class NavigationManager :
                 addToBackStack((2147483646.0 * Math.random()).toInt().toString())
                 navigateAble = false
                 handlerNavigate.postDelayed(
-                    { navigateAble = true }, 1000
+                    { navigateAble = true }, 500
                 )
             }
         } catch (e: Exception) {
@@ -131,17 +129,5 @@ class NavigationManager :
             null
         }
     }
-
-    override fun onBackStackChanged() {
-        if (getCurrentFragment() == null) return
-        val fragment: Fragment? = getCurrentFragment()
-
-        try {
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
 
 }

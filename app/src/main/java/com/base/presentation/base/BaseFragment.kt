@@ -35,10 +35,7 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
         Timber.d("$TAG onViewCreated")
         initView()
         initObserver()
-        if (isInitGetData())
-            getData()
     }
-
     open fun isInitGetData(): Boolean = true
 
 
@@ -52,23 +49,20 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
      */
     private fun initObserver() {
         lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
                 initObserverCreated()
             }
         }
     }
-    open suspend fun initObserverCreated(){
 
+    open suspend fun initObserverCreated() {
     }
-    /**
-     * Usually use for get your screen data
-     * Helpful when refresh new data
-     */
-    abstract fun getData()
+
     override fun onDestroyView() {
         super.onDestroyView()
         Timber.d(" $TAG onDestroyView")
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

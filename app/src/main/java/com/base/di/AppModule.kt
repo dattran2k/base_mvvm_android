@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 /**
@@ -21,17 +22,18 @@ class AppModule {
     @Provides
     fun providesGson(): Gson = GsonBuilder().setLenient().create()
 
-
     @Provides
     @Singleton
     fun providerContext(application: Application): Context = application.applicationContext
 
     @Provides
     @Singleton
-    fun provideApp(): App {
-        return App()
+    fun provideApp(): MyApplication {
+        return MyApplication()
     }
     //Api Service with retrofit instance
 
-
+    @Provides
+    @Singleton
+    fun provideCoroutinesDispatcher() = Dispatchers.IO
 }

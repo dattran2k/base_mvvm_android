@@ -14,8 +14,6 @@ class M03DiscoverFragment : BaseFragment<M03FragmentDiscoverBinding>(M03Fragment
     }
 
 
-    override fun getData() {
-
-    }
+   
 
 }

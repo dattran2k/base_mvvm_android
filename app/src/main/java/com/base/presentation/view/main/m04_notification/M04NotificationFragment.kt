@@ -13,8 +13,6 @@ class M04NotificationFragment : BaseFragment<M04FragmentNotificationBinding>(M04
 
     }
 
-    override fun getData() {
-
-    }
+   
 
 }

@@ -7,10 +7,12 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.os.Build
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import timber.log.Timber
 
 object InternetUtil {
-    var internetState = MutableStateFlow(true)
+    private val _internetState = MutableStateFlow(true)
+    val internetState = _internetState.asStateFlow()
     fun init(application: Application) {
         val connectivityManager = application.getSystemService(ConnectivityManager::class.java)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -18,7 +20,7 @@ object InternetUtil {
                 override fun onAvailable(network: Network) {
                     Timber.e("The default network is now: $network")
                     connectivityManager.getNetworkCapabilities(network)?.let {
-                        internetState.value = when {
+                        _internetState.value = when {
                             it.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
                             it.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
                             //for other device how are able to connect with Ethernet

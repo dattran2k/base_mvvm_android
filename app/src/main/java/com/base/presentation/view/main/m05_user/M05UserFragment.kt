@@ -9,5 +9,4 @@ class M05UserFragment(): BaseFragment<M05FragmentUserBinding>(M05FragmentUserBin
 
 
     override fun initView() {}
-    override fun getData() {}
 }

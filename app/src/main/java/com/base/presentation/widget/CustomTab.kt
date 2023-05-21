@@ -12,10 +12,10 @@ import com.base.databinding.CustomTabViewpagerBinding
 
 class CustomTab(context: Context, attributeSet: AttributeSet? = null) :
     LinearLayout(context, attributeSet) {
-    var _binding: CustomTabViewpagerBinding? = null
-    val binding get() = _binding!!
+    var binding: CustomTabViewpagerBinding? = null
+
     init {
-        _binding = CustomTabViewpagerBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = CustomTabViewpagerBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
     override fun setSelected(selected: Boolean) {
@@ -26,8 +26,8 @@ class CustomTab(context: Context, attributeSet: AttributeSet? = null) :
         } else {
             R.color.gray_666
         }
-        binding.tvTitle.setTextColor(ContextCompat.getColor(context, color))
-        binding.imIcon.setColorFilter(
+        binding?.tvTitle?.setTextColor(ContextCompat.getColor(context, color))
+        binding?.imIcon?.setColorFilter(
             ContextCompat.getColor(context, color),
             android.graphics.PorterDuff.Mode.SRC_IN
         )

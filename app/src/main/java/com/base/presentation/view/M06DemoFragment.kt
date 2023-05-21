@@ -19,8 +19,6 @@ class M06DemoFragment : BaseFragment<M06FragmentDemoBinding>(M06FragmentDemoBind
     }
 
 
-    override fun getData() {
-
-    }
+   
 
 }

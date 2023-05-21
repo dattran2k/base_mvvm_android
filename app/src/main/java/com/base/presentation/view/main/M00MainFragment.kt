@@ -21,7 +21,7 @@ class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBind
 
     private var pagerAdapter: MainViewPagerAdapter? = null
     companion object {
-        private val homeTabModel = listOf<HomeTabModel<out Fragment>>(
+        private val homeTabModel = listOf(
             HomeTabModel(M01HomeFragment::class, R.drawable.ic_tab_home, R.string.tab_home),
             HomeTabModel(M02TrendFragment::class, R.drawable.ic_tab_trend, R.string.tab_trend),
             HomeTabModel(M03DiscoverFragment::class, R.drawable.ic_tab_discover, R.string.tab_discover),
@@ -50,14 +50,12 @@ class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBind
         text: String?,
     ): CustomTab {
         val tab = CustomTab(requireContext())
-        tab.binding.imIcon.setImageDrawable(image)
-        tab.binding.tvTitle.text = text
+        tab.binding?.imIcon?.setImageDrawable(image)
+        tab.binding?.tvTitle?.text = text
         return tab
     }
 
-    override fun getData() {
-
-    }
+   
 
     fun backToHome() {
         try {

@@ -1,6 +1,6 @@
 package com.base.presentation.view.main.m04_notification
 
-import com.base.model.network.DemoRepository
+import com.base.model.DemoRepository
 import com.base.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
