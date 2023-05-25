@@ -2,12 +2,10 @@ package com.base.presentation.view.main
 
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import com.base.R
-import com.base.presentation.base.BaseFragment
-import com.base.common.Constants.TabHome.TAB_HOME_POSITION
+import com.base.data.model.HomeTabModel
 import com.base.databinding.M00FragmentMainBinding
-import com.base.model.entity.HomeTabModel
+import com.base.presentation.base.BaseFragment
 import com.base.presentation.view.main.m01_home.M01HomeFragment
 import com.base.presentation.view.main.m02_trend.M02TrendFragment
 import com.base.presentation.view.main.m03_discover.M03DiscoverFragment
@@ -55,15 +53,5 @@ class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBind
         return tab
     }
 
-   
 
-    fun backToHome() {
-        try {
-            if (binding.pager.currentItem != TAB_HOME_POSITION) {
-                binding.pager.setCurrentItem(TAB_HOME_POSITION, false)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
 }

@@ -1,17 +1,16 @@
-package com.base.model.network.data_source
+package com.base.data.network.data_source
 
 import android.content.Context
 import com.base.util.InternetUtil
-import com.base.model.network.Resource
+import com.base.data.network.Resource
 import retrofit2.Response
 
-abstract class BaseDataSource(private val mContext: Context) {
+abstract class BaseDataSource() {
     suspend fun <T : Any> safeApiCall(
         apiCall: suspend () -> Response<T>,
     ): Resource<T> {
         try {
             if (!InternetUtil.isNetworkAvailable()) {
-
                 return Resource.error("No Internet")
             }
             val response = apiCall()
@@ -24,7 +23,6 @@ abstract class BaseDataSource(private val mContext: Context) {
 //            Log.e("DEBUG", response.code().toString())
             val errorBody = response.errorBody()?.string() ?: "Error"
             if (response.code() == 400) {
-//                Timber.d(errorBody.toJson())
                 try {
                     return Resource.error(errorBody)
                 } catch (e: Exception) {

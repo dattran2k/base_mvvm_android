@@ -1,6 +1,6 @@
-package com.base.model.network.service
+package com.base.data.network.service
 
-import com.base.model.network.Endpoint
+import com.base.data.network.Endpoint
 import retrofit2.Response
 import retrofit2.http.GET
 

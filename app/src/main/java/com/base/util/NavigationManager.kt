@@ -43,24 +43,6 @@ class NavigationManager {
         mFragmentManager.popBackStack()
     }
 
-    fun popToHome() {
-        if (mFragmentManager.backStackEntryCount > 0) {
-            val homeFragmentId = mFragmentManager.getBackStackEntryAt(0).id
-            mFragmentManager.popBackStack(
-                homeFragmentId,
-                FragmentManager.POP_BACK_STACK_INCLUSIVE
-            )
-            mFragmentManager.fragments.forEach {
-                val findMainFragment = it
-                if (findMainFragment is M00MainFragment) {
-                    findMainFragment.backToHome()
-                    return@forEach
-                }
-            }
-        } else {
-            popBackStack()
-        }
-    }
 
     fun openFragment(
         fragment: Fragment,

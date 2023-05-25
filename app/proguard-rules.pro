@@ -22,7 +22,7 @@
 
 
 
--keep class com.base.model.** {*;}
+-keep class com.base.data.** {*;}
 -keepattributes *Annotation*
 
 -keepclassmembers class ** {

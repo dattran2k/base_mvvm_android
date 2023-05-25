@@ -1,4 +1,4 @@
-package com.base.model.entity
+package com.base.data.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

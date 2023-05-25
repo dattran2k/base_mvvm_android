@@ -1,11 +1,10 @@
 package com.base.presentation.view.main.m01_home
 
 import androidx.fragment.app.viewModels
-import com.base.presentation.base.BaseFragment
-import com.base.presentation.base.CommonState
 import com.base.databinding.M01FragmentHomeBinding
-import com.base.util.NavigationManager
+import com.base.presentation.base.BaseFragment
 import com.base.presentation.view.M06DemoFragment
+import com.base.util.NavigationManager
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -15,7 +14,10 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
     private val viewModel: M01HomeViewModel by viewModels()
     override fun initView() {
         binding.tv.setOnClickListener {
-            NavigationManager.getInstance().openFragment(M06DemoFragment(),)
+            NavigationManager.getInstance().openFragment(M06DemoFragment())
+        }
+        binding.swLayout.setOnRefreshListener {
+            viewModel.getData()
         }
     }
 
@@ -23,17 +25,17 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
         viewModel.homeState.collect { state ->
             Timber.e(state.toString())
             when (state) {
-                is CommonState.Init -> {
-
+                is HomeUiState.Error -> {
+                    binding.swLayout.isRefreshing = false
+                    binding.tv.text = state.msg
                 }
 
-                is CommonState.Error -> {
+                is HomeUiState.Loading -> {
                 }
 
-                is CommonState.Loading -> {
-                }
-
-                is CommonState.Success -> {
+                is HomeUiState.Success -> {
+                    binding.tv.text = state.data
+                    binding.swLayout.isRefreshing = false
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.base.model.network
+package com.base.data.network
 
 object Endpoint {
     // demo

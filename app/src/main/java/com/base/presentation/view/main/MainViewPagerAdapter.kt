@@ -2,7 +2,7 @@ package com.base.presentation.view.main
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.base.model.entity.HomeTabModel
+import com.base.data.model.HomeTabModel
 
 class MainViewPagerAdapter(
     fragment: Fragment,
