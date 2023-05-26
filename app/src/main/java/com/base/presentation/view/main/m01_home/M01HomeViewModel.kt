@@ -7,15 +7,17 @@ import com.base.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
+import kotlin.concurrent.thread
 
 
 @HiltViewModel
 class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) : BaseViewModel() {
-    private val _homeState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
-    val homeState = _homeState.asStateFlow()
+    private val _homeUiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
+    val homeUiState = _homeUiState.asStateFlow()
 
     init {
         getData()
@@ -23,17 +25,16 @@ class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) :
 
     fun getData() {
         viewModelScope.launch {
-            _homeState.emit(HomeUiState.Loading)
-            demoRepository.getDemo().collectLatest {
-                _homeState.emit(
-                    if (it.data != null && it.status == Resource.Status.SUCCESS)
-                        HomeUiState.Success(it.data)
-                    else
-                        HomeUiState.Error(it.message)
-                )
+            _homeUiState.emit(HomeUiState.Loading)
+            demoRepository.getDemo().map {
+                if (it.data != null && it.status == Resource.Status.SUCCESS)
+                    HomeUiState.Success(it.data)
+                else
+                    HomeUiState.Error(it.message)
+            }.collect {
+                _homeUiState.emit(it)
             }
         }
     }
-
 }
 

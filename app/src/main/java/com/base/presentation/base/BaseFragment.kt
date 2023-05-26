@@ -16,7 +16,7 @@ import timber.log.Timber
 abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layoutInflater: LayoutInflater) -> T) :
     Fragment() {
 
-    var _binding: T? = null
+    protected var _binding: T? = null
     protected val binding get() = _binding!!
     protected var isReady = _binding != null
     var TAG: String = this.javaClass.simpleName;
@@ -36,8 +36,6 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
         initView()
         initObserver()
     }
-    open fun isInitGetData(): Boolean = true
-
 
     /**
      * run after onViewCreated

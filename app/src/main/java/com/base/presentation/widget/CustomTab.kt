@@ -22,7 +22,6 @@ class CustomTab(context: Context, attributeSet: AttributeSet? = null) :
         super.setSelected(selected)
         val color = if (selected) {
             R.color.active
-
         } else {
             R.color.gray_666
         }

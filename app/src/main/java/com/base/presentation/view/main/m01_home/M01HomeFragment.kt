@@ -6,6 +6,7 @@ import com.base.presentation.base.BaseFragment
 import com.base.presentation.view.M06DemoFragment
 import com.base.util.NavigationManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -22,7 +23,7 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
     }
 
     override suspend fun initObserverCreated() {
-        viewModel.homeState.collect { state ->
+        viewModel.homeUiState.collectLatest { state ->
             Timber.e(state.toString())
             when (state) {
                 is HomeUiState.Error -> {
@@ -31,6 +32,7 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
                 }
 
                 is HomeUiState.Loading -> {
+                    binding.tv.text = "LOADING"
                 }
 
                 is HomeUiState.Success -> {
