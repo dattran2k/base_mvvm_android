@@ -4,6 +4,7 @@ import androidx.fragment.app.viewModels
 import com.base.databinding.M01FragmentHomeBinding
 import com.base.presentation.base.BaseFragment
 import com.base.presentation.view.M06DemoFragment
+import com.base.presentation.view.main.M00MainFragmentDirections
 import com.base.util.NavigationManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -15,7 +16,7 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
     private val viewModel: M01HomeViewModel by viewModels()
     override fun initView() {
         binding.tv.setOnClickListener {
-            NavigationManager.getInstance().openFragment(M06DemoFragment())
+            navigate(M00MainFragmentDirections.actionM00MainFragmentToM06DemoFragment())
         }
         binding.swLayout.setOnRefreshListener {
             viewModel.getData()

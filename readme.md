@@ -1,14 +1,21 @@
-- Use Java 18
+- No modular, use for 'Not HUGE' project
+- Java 18
+- Navigation Component
+- Coroutines - flow
+- Retrofit2 
+- Hilt & Dagger
+- MVVM
+- Debugging : Chucker, Timber
+- Shared Preference (I used old way singleton for this)
 - project structure
     -  base -
     -  common -> Constants and extention
     -  di -> dependency injection 
     -  helper -> utils
-    -  model 
-       - entity : data class for smt
+    -  model
        - network : for network request
        - local : ..... not impl yet
-       - all repository class
+       - repository : ... bridge between model layer and presentation layer
     -  presentation -> for user interface
             - shareAdapter : reuse adapter, holder
             - view -> screen (in this base is fragment)

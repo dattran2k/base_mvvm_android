@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -25,8 +26,9 @@ class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) :
 
     fun getData() {
         viewModelScope.launch {
-            _homeUiState.emit(HomeUiState.Loading)
-            demoRepository.getDemo().map {
+            demoRepository.getDemo().onStart {
+                _homeUiState.emit(HomeUiState.Loading)
+            }.map {
                 if (it.data != null && it.status == Resource.Status.SUCCESS)
                     HomeUiState.Success(it.data)
                 else

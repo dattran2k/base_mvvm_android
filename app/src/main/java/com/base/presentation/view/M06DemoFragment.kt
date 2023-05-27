@@ -14,7 +14,7 @@ class M06DemoFragment : BaseFragment<M06FragmentDemoBinding>(M06FragmentDemoBind
             .load("https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg")
             .into(binding.image)
         binding.image.setOnClickListener {
-            NavigationManager.getInstance().openFragmentBottomUp(M06DemoFragment())
+            pop()
         }
     }
 

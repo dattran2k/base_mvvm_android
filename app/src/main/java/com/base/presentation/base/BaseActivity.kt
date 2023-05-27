@@ -36,24 +36,6 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initListenInternet()
-        onBackPressedDispatcher.addCallback(this , object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                Timber.e("onBackPressed ${supportFragmentManager.backStackEntryCount}")
-                if (supportFragmentManager.backStackEntryCount== 0) {
-                    if (!isBack) {
-                        Toast.makeText(this@BaseActivity, "Click 1 more time to back", Toast.LENGTH_LONG).show()
-                        isBack = true
-                        backHandler.postDelayed({
-                            isBack = false
-                        }, TIME)
-                    } else {
-                        finish()
-                    }
-                } else {
-                    supportFragmentManager.popBackStack()
-                }
-            }
-        })
     }
 
     private fun initListenInternet() {

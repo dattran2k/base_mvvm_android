@@ -10,23 +10,23 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.gms.googleServices)
+    alias(libs.plugins.navigation.args)
 //    id("com.google.protobuf") version "0.9.1"
-//    alias(libs.plugins.android.dagger.hilt.library)
     alias(libs.plugins.android.dagger.hilt)
     id("kotlin-parcelize")
     kotlin("kapt")
 }
 fun getDate(): String {
-    val format = "HH\'h\')_\'Ngay\'_dd"
+    val format = "HH\'h\')_\'Day\'_dd"
     val current = Calendar.getInstance().time
     return SimpleDateFormat(format).format(current)
 }
 android {
     namespace = "com.base"
     defaultConfig {
-        applicationId  = "com.base"
-        versionCode =1
-        versionName ="1.0"
+        applicationId = "com.base"
+        versionCode = 1
+        versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
