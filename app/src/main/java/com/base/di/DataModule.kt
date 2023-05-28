@@ -34,4 +34,5 @@ object DataModule {
     ): DemoRepository {
         return DemoRepositoryIml(dataSource, dispatcher)
     }
+
 }

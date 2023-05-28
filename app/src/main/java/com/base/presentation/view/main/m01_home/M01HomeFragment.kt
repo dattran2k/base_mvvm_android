@@ -3,9 +3,7 @@ package com.base.presentation.view.main.m01_home
 import androidx.fragment.app.viewModels
 import com.base.databinding.M01FragmentHomeBinding
 import com.base.presentation.base.BaseFragment
-import com.base.presentation.view.M06DemoFragment
 import com.base.presentation.view.main.M00MainFragmentDirections
-import com.base.util.NavigationManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber

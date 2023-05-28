@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface DemoRepository {
-    fun getDemo(): Flow<Resource<String>>
+    suspend fun getDemo(): Flow<Resource<String>>
 }

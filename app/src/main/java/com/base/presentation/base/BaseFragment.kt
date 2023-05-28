@@ -16,11 +16,7 @@ import androidx.viewbinding.ViewBinding
 import com.base.R
 import kotlinx.coroutines.launch
 import timber.log.Timber
-enum class AnimNavigate {
-    LEFT_RIGHT,
-    UP_DOWN,
-    FADE,NONE
-}
+
 
 abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layoutInflater: LayoutInflater) -> T) :
     Fragment() {
@@ -143,5 +139,11 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
         super.onDestroy()
         _binding = null
         Timber.d(" $TAG onDestroy")
+    }
+
+    enum class AnimNavigate {
+        LEFT_RIGHT,
+        UP_DOWN,
+        FADE,NONE
     }
 }

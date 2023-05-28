@@ -1,28 +1,44 @@
 package com.base.data.network
 
+import com.base.util.InternetUtil
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import retrofit2.Response
+
 
 /**
  * This is used for getting states of network call
  */
+sealed interface Resource<in T : Any> {
+    class Success<T : Any>(val data: T) : Resource<T>
+    object Loading : Resource<Any>
+    class Error<T : Any>(val message: String, val code: Int, val data: T? = null) : Resource<T>
 
-data class Resource <out T>(val status: Status, val data: T?, val message: String?) {
-    enum class Status {
-        SUCCESS,
-        ERROR,
-        LOADING
-    }
 
-    companion object {
-        fun <T> success(data: T): Resource<T> {
-            return Resource(Status.SUCCESS, data, null)
+}
+
+fun <T : Any> (suspend () -> Response<T>).toFlowSafeApi(
+    dispatcher: CoroutineDispatcher,
+): Flow<Resource<T>> {
+    return flow {
+        emit(Resource.Loading)
+        if (!InternetUtil.isNetworkAvailable()) {
+            emit(Resource.Error("No Internet", 0))
+            return@flow
         }
-
-        fun <T> error(message: String, data: T? = null): Resource<T> {
-            return Resource(Status.ERROR, data, message)
+        val response = this@toFlowSafeApi.invoke()
+        if (response.isSuccessful) {
+            val body = response.body()
+            if (body != null) {
+                emit(Resource.Success(body))
+                return@flow
+            }
         }
-
-        fun <T> loading(data: T? = null): Resource<T> {
-            return Resource(Status.LOADING, data, null)
-        }
-    }
+        emit(Resource.Error(response.errorBody()?.string() ?: response.message(), response.code()))
+    }.catch {
+        emit(Resource.Error(it.message ?: "Lỗi", 0))
+    }.flowOn(dispatcher)
 }

@@ -1,41 +1,15 @@
 package com.base.data.network.data_source
 
-import android.content.Context
 import com.base.util.InternetUtil
 import com.base.data.network.Resource
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import retrofit2.Response
 
-abstract class BaseDataSource() {
-    suspend fun <T : Any> safeApiCall(
-        apiCall: suspend () -> Response<T>,
-    ): Resource<T> {
-        try {
-            if (!InternetUtil.isNetworkAvailable()) {
-                return Resource.error("No Internet")
-            }
-            val response = apiCall()
-            if (response.isSuccessful) {
-                val body = response.body()
-                if (body != null) {
-                    return Resource.success(body)
-                }
-            }
-//            Log.e("DEBUG", response.code().toString())
-            val errorBody = response.errorBody()?.string() ?: "Error"
-            if (response.code() == 400) {
-                try {
-                    return Resource.error(errorBody)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
 
-            return Resource.error(
-                "${response.code()}|${response.message()}",
-            )
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return Resource.error(e.message ?: "Lỗi")
-        }
-    }
+abstract class BaseDataSource(private val dispatcher: CoroutineDispatcher) {
+
+
 }
