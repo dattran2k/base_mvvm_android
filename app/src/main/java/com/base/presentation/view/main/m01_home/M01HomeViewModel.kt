@@ -27,6 +27,10 @@ import javax.inject.Inject
  * That's why it difference. One day, maybe I will create that data flow
  * =========================================================================================
  */
+/**
+Pick one style getData
+ */
+
 @HiltViewModel
 class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) : BaseViewModel() {
 
@@ -34,13 +38,17 @@ class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) :
     val homeUiState: StateFlow<HomeUiState> = _homeUiState
 
     init {
+        updateData()
+    }
+
+    fun updateData() {
         getData()
     }
 
-    fun getData() {
+    private fun getData() {
         viewModelScope.launch {
             // This still have too much boilerplate code, how to improve this ?
-            demoRepository.getDemo().map {
+            demoRepository.getDataWithFlow().map {
                 when (it) {
                     is Resource.Error -> HomeUiState.Error(it.message)
                     Resource.Loading -> HomeUiState.Loading
@@ -48,6 +56,22 @@ class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) :
                 }
             }.collect {
                 _homeUiState.emit(it)
+            }
+        }
+    }
+
+    // getDataWithoutFlow will not emit Resource.Loading , so we have to emit HomeUiState.Loading ourself
+    fun getDataStyle2() {
+        viewModelScope.launch {
+            _homeUiState.emit(HomeUiState.Loading)
+            demoRepository.getDataWithoutFlow().let {
+                _homeUiState.emit(
+                    when (it) {
+                        is Resource.Error -> HomeUiState.Error(it.message)
+                        Resource.Loading -> HomeUiState.Loading
+                        is Resource.Success -> HomeUiState.Success(it.data)
+                    }
+                )
             }
         }
     }

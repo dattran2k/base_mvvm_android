@@ -17,7 +17,7 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
             navigate(M00MainFragmentDirections.actionM00MainFragmentToM06DemoFragment())
         }
         binding.swLayout.setOnRefreshListener {
-            viewModel.getData()
+            viewModel.updateData()
         }
     }
 
