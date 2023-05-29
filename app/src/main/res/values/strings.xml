@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Base</string>
-    <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="tab_home">First</string>
     <string name="tab_trend">Second</string>

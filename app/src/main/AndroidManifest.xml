@@ -15,18 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Base"
         android:usesCleartextTraffic="true"
-        tools:replace="android:networkSecurityConfig,android:label"
-        tools:targetApi="31">
+        tools:replace="android:networkSecurityConfig,android:label">
         <activity
             android:name="com.base.presentation.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Base.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-
-
             </intent-filter>
         </activity>
 
