@@ -25,6 +25,7 @@
   
  ## Explanation some case
  ### Why ViewModel state  difference than this project from Google : https://github.com/dattran2k/nowinandroid/tree/main/feature
+ * My explain for "NowInAndroid" project here : https://github.com/dattran2k/now_in_android_flow_explain
  * Data  of "now in android" project is listen from local (Room, DataStore) using Flow
  * check https://developer.android.com/topic/libraries/architecture/datastore?hl=vi
  * and https://developer.android.com/codelabs/basic-android-kotlin-training-intro-room-flow?hl=vi#0
