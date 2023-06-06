@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.base.util.InternetUtil
+import com.base.core.util.InternetUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -29,9 +29,6 @@ abstract class BaseActivity : AppCompatActivity() {
     }
     var isBack = false
     var backHandler = Handler(Looper.getMainLooper())
-
-    @Inject
-    protected lateinit var sharePreference: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

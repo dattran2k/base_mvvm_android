@@ -26,6 +26,7 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
     protected var isReady = _binding != null
     var TAG: String = this.javaClass.simpleName;
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

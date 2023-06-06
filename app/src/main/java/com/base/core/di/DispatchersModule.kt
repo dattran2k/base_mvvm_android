@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.base.di
+package com.base.core.di
 
 import dagger.Module
 import dagger.Provides

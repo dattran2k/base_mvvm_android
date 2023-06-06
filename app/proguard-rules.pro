@@ -33,5 +33,4 @@
 #-keep public class com.google.firebase.messaging.FirebaseMessagingService {
 #  public *;
 #}
-
 -keepattributes InnerClasses

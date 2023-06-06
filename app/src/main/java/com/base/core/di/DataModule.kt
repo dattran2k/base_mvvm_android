@@ -1,11 +1,10 @@
-package com.base.di
+package com.base.core.di
 
 import android.content.Context
-import android.content.SharedPreferences
-import com.base.data.network.data_source.ApiDataSource
+import com.base.core.datastore.DataStoreManager
+import com.base.data.network.ApiDataSource
 import com.base.data.respository.DemoRepository
 import com.base.data.respository.DemoRepositoryIml
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,10 +20,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
-    @Singleton
     @Provides
-    fun providesSharedPreference(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences("news.thanhnien", Context.MODE_PRIVATE)
+    @Singleton
+    fun providesDataStore(
+        @ApplicationContext context: Context,
+    ): DataStoreManager {
+        return DataStoreManager(context)
     }
 
     @Provides

@@ -6,7 +6,7 @@
 - Hilt & Dagger
 - MVVM
 - Debugging : Chucker, Timber
-- Shared Preference (I used old way singleton for this)
+- Data Store 
 - project structure
     -  base -
     -  common -> Constants and extention
@@ -25,7 +25,7 @@
   
  ## Explanation some case
  ### Why ViewModel state  difference than this project from Google : https://github.com/dattran2k/nowinandroid/tree/main/feature
- * Data  of "now in android" project is listen from local (Room, DataStore) using Flow
+ * Data of "now in android" project is listen from local (Room, DataStore) using Flow
  * check https://developer.android.com/topic/libraries/architecture/datastore?hl=vi
  * and https://developer.android.com/codelabs/basic-android-kotlin-training-intro-room-flow?hl=vi#0
  * that's mean if database data changed, flow will emit new data, and ViewModel state ( homeUiState ) will able to collect that

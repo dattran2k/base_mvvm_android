@@ -1,4 +1,4 @@
-package com.base.util
+package com.base.core.util
 
 import android.app.Application
 import android.net.ConnectivityManager

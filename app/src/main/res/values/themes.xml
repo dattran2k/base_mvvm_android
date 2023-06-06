@@ -1,17 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Base" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary</item>
         <item name="colorOnPrimary">@color/color_white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/color_white</item>
+        <item name="colorSecondary">@color/primary</item>
         <item name="colorSecondaryVariant">@color/color_white</item>
         <item name="colorOnSecondary">@color/color_white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/color_white</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor" >@color/transparent</item>
+        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
         <!-- Customize your theme here. -->
     </style>
 

@@ -1,9 +1,11 @@
 package com.base.presentation.view.main
 
 import android.graphics.drawable.Drawable
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.base.R
-import com.base.data.model.HomeTabModel
 import com.base.databinding.M00FragmentMainBinding
 import com.base.presentation.base.BaseFragment
 import com.base.presentation.view.main.m01_home.M01HomeFragment
@@ -17,30 +19,40 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBinding::inflate) {
 
-    private var pagerAdapter: MainViewPagerAdapter? = null
-    companion object {
-        private val homeTabModel = listOf(
-            HomeTabModel(M01HomeFragment::class, R.drawable.ic_tab_home, R.string.tab_home),
-            HomeTabModel(M02TrendFragment::class, R.drawable.ic_tab_trend, R.string.tab_trend),
-            HomeTabModel(M03DiscoverFragment::class, R.drawable.ic_tab_discover, R.string.tab_discover),
-            HomeTabModel(M04NotificationFragment::class, R.drawable.ic_tab_notification, R.string.tab_notification),
-            HomeTabModel(M05UserFragment::class, R.drawable.ic_tab_user, R.string.tab_user),
-        )
-    }
+
+    data class HomeTabData(@DrawableRes val icon: Int, @StringRes val title: Int)
+    private val listTab = listOf(
+        HomeTabData(R.drawable.ic_tab_home, R.string.tab_home),
+        HomeTabData(R.drawable.ic_tab_trend, R.string.tab_trend),
+        HomeTabData(R.drawable.ic_tab_discover, R.string.tab_discover),
+        HomeTabData(R.drawable.ic_tab_notification, R.string.tab_notification),
+        HomeTabData(R.drawable.ic_tab_user, R.string.tab_user),
+    )
+
+    private var pagerAdapter: MainViewPagerAdapter<Any, Fragment>? = null
+
     override fun initView() {
-        pagerAdapter = MainViewPagerAdapter(this, homeTabModel)
+        pagerAdapter = MainViewPagerAdapter(this, listTab) { _, position ->
+            when (position) {
+                0 -> M01HomeFragment()
+                1 -> M02TrendFragment()
+                2 -> M03DiscoverFragment()
+                3 -> M04NotificationFragment()
+                else -> M05UserFragment()
+            }
+        }
         binding.pager.adapter = pagerAdapter
         binding.pager.isUserInputEnabled = false
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.customView = getCustomViewTab(
                 ContextCompat.getDrawable(
                     requireContext(),
-                    homeTabModel[position].icon
+                    listTab[position].icon
                 ),
-                getString(homeTabModel[position].title),
+                getString(listTab[position].title),
             )
         }.attach()
-        binding.pager.offscreenPageLimit = 5
+
     }
 
     private fun getCustomViewTab(

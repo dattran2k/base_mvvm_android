@@ -1,8 +1,8 @@
-package com.base.di
+package com.base.core.di
 
 import android.content.Context
 import com.base.BuildConfig
-import com.base.data.network.service.DemoService
+import com.base.data.network.DemoServiceRetrofit
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
@@ -61,7 +61,7 @@ class RetrofitServiceModule {
 
     @Provides
     @Singleton
-    fun provideDemoService(retrofit: Retrofit): DemoService = retrofit.create(DemoService::class.java)
+    fun provideDemoService(retrofit: Retrofit): DemoServiceRetrofit = retrofit.create(DemoServiceRetrofit::class.java)
 
 }
 

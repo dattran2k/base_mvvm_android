@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 import java.util.Calendar
 import java.text.SimpleDateFormat
 
@@ -14,7 +13,7 @@ plugins {
 //    id("com.google.protobuf") version "0.9.1"
     alias(libs.plugins.android.dagger.hilt)
     id("kotlin-parcelize")
-    kotlin("kapt")
+    id("kotlin-kapt")
 }
 fun getDate(): String {
     val format = "HH\'h\')_\'Day\'_dd"
@@ -105,6 +104,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.livedata)
+    implementation(libs.androidx.datastore)
 
     // firebase
     implementation(platform(libs.firebase.bom))

@@ -18,8 +18,8 @@
             android:id="@+id/im_icon"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginTop="@dimen/size_2"
-            android:padding="@dimen/size_2"
+            android:layout_marginTop="2dp"
+            android:padding="2dp"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,6 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
-            style="@style/TextSF14TitleRegular400"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -36,7 +35,7 @@
             android:includeFontPadding="false"
             android:lines="1"
             android:textColor="@color/active"
-            android:textSize="9dp"
+            android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/im_icon" />

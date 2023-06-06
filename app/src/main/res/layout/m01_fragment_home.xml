@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".presentation.view.main.m01_home.M01HomeFragment">
@@ -13,7 +12,6 @@
         android:layout_height="match_parent">
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv"
-            style="@style/TextSF14TitleRegular400"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/_16sdp"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // theme
+    <color name="color_title">@color/color_white</color>
+    <color name="color_subtitle">@color/color_gray_aa</color>
+    <color name="color_stroke_track">@color/transparent</color>
+    <color name="color_solid_track">@color/color_white_alpha_10</color>
+    <color name="color_line">@color/color_white_alpha_10</color>
+
+</resources>

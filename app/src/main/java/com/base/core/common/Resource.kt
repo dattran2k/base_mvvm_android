@@ -1,6 +1,6 @@
-package com.base.data.network
+package com.base.core.common
 
-import com.base.util.InternetUtil
+import com.base.core.util.InternetUtil
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

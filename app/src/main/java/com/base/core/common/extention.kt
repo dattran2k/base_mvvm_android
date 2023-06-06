@@ -1,4 +1,4 @@
-package com.base.common
+package com.base.core.common
 
 import android.view.View
 

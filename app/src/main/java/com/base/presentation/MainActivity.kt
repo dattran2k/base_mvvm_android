@@ -48,7 +48,7 @@ class MainActivity : BaseActivity() {
             }
         })
 
-        getController().addOnDestinationChangedListener { controller, destination, arguments ->
+        getController().addOnDestinationChangedListener { _, destination, _ ->
             Timber.e("Destination Change : ${destination.label}")
             when (destination.id) {
                 R.id.m00_main_fragment -> {
