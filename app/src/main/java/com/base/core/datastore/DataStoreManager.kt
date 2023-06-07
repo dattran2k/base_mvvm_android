@@ -19,8 +19,6 @@ class DataStoreManager @Inject constructor(@ApplicationContext private val conte
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(Constants.PREFERENCES_STORE_NAME)
 
-
-
     suspend fun <T> storeValue(key: Preferences.Key<T>, value: T) {
         context.dataStore.edit {
             it[key] = value

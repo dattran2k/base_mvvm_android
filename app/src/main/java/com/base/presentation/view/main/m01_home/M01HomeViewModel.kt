@@ -43,8 +43,7 @@ class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) :
     val homeUiState: StateFlow<HomeUiState> = _homeUiState
 
     init {
-        updateData()
-
+        getData()
     }
 
     fun updateData() {

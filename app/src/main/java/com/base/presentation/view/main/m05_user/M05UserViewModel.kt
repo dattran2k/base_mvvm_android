@@ -8,6 +8,7 @@ import com.base.data.respository.DemoRepository
 import com.base.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -18,7 +19,7 @@ class M05UserViewModel @Inject constructor(
     private val demoRepository: DemoRepository,
     private val dataStoreManager: DataStoreManager,
 ) : BaseViewModel() {
-    val darkModeState = dataStoreManager.getValue(DataStorePref.PREF_DARK_MODE).map {
+    val darkModeState = dataStoreManager.getValue(DataStorePref.PREF_DARK_MODE).distinctUntilChanged().map {
         it?.let { it1 -> Utility.setAppMode(it1) }
         it
     }.stateIn(

@@ -6,19 +6,7 @@
 - Hilt & Dagger
 - MVVM
 - Debugging : Chucker, Timber
-- Data Store 
-- project structure
-    -  base -
-    -  common -> Constants and extention
-    -  di -> dependency injection 
-    -  helper -> utils
-    -  model
-       - network : for network request
-       - local : ..... not impl yet
-       - repository : ... bridge between model layer and presentation layer
-    -  presentation -> for user interface
-            - shareAdapter : reuse adapter, holder
-            - view -> screen (in this base is fragment)
+- Data Store
 
 - git flow
   -https://danielkummer.github.io/git-flow-cheatsheet/index.html
