@@ -1,10 +1,10 @@
-package com.base.presentation.view.main.m05_user
+package com.base.presentation.view.m00_main.m05_user
 
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.base.core.common.DataStorePref
 import com.base.databinding.M05FragmentUserBinding
-import com.base.presentation.base.BaseFragment
+import com.base.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

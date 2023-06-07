@@ -1,4 +1,4 @@
-package com.base.presentation
+package com.base.presentation.view
 
 import android.annotation.SuppressLint
 import android.content.Intent

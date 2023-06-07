@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/m00_main_fragment"
-        android:name="com.base.presentation.view.main.M00MainFragment"
+        android:name="com.base.presentation.view.m00_main.M00MainFragment"
         android:label="m00"
         tools:layout="@layout/m00_fragment_main">
 
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/m06_demo_fragment"
-        android:name="com.base.presentation.view.M06DemoFragment"
+        android:name="com.base.presentation.view.m06_demo.M06DemoFragment"
         android:label="m06"
         tools:layout="@layout/m06_fragment_demo">
 

@@ -1,18 +1,13 @@
-package com.base.presentation.view.main.m01_home
+package com.base.presentation.view.m00_main.m01_home
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.base.core.common.DataStorePref
 import com.base.core.common.Resource
-import com.base.core.common.toJson
-import com.base.core.datastore.DataStoreManager
 import com.base.data.respository.DemoRepository
-import com.base.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -38,7 +33,7 @@ Pick one style getData
 
 @HiltViewModel
 class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) :
-    BaseViewModel() {
+    ViewModel() {
 
     private val _homeUiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
     val homeUiState: StateFlow<HomeUiState> = _homeUiState

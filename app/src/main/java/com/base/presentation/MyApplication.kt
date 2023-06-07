@@ -1,4 +1,4 @@
-package com.base.core.di
+package com.base.presentation
 
 import android.app.Application
 import com.base.BuildConfig

@@ -1,7 +1,7 @@
-package com.base.presentation.view.main.m04_notification
+package com.base.presentation.view.m00_main.m04_notification
 
 import androidx.fragment.app.viewModels
-import com.base.presentation.base.BaseFragment
+import com.base.presentation.BaseFragment
 import com.base.databinding.M04FragmentNotificationBinding
 import dagger.hilt.android.AndroidEntryPoint
 

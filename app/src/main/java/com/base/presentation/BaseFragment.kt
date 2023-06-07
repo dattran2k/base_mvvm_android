@@ -1,4 +1,4 @@
-package com.base.presentation.base
+package com.base.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater

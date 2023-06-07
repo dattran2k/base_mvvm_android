@@ -1,10 +1,10 @@
-package com.base.presentation.view.main.m01_home
+package com.base.presentation.view.m00_main.m01_home
 
 import androidx.fragment.app.viewModels
 import com.base.databinding.M01FragmentHomeBinding
-import com.base.presentation.base.BaseFragment
-import com.base.presentation.base.navigate
-import com.base.presentation.view.main.M00MainFragmentDirections
+import com.base.presentation.BaseFragment
+import com.base.presentation.navigate
+import com.base.presentation.view.m00_main.M00MainFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber

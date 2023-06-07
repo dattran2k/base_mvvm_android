@@ -1,8 +1,7 @@
-package com.base.presentation.view.main
+package com.base.presentation.view.m00_main
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.base.presentation.base.BaseFragment
 
 class MainViewPagerAdapter<D : Any, T : Fragment>(
     val fragment: Fragment,

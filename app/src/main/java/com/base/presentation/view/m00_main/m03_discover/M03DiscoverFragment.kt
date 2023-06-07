@@ -1,7 +1,7 @@
-package com.base.presentation.view.main.m03_discover
+package com.base.presentation.view.m00_main.m03_discover
 
 import androidx.fragment.app.viewModels
-import com.base.presentation.base.BaseFragment
+import com.base.presentation.BaseFragment
 import com.base.databinding.M03FragmentDiscoverBinding
 import dagger.hilt.android.AndroidEntryPoint
 

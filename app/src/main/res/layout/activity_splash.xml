@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:scaleType="centerCrop"
     android:adjustViewBounds="true"
-    tools:context=".presentation.MainActivity">
+    tools:context=".presentation.view.MainActivity">
 
 
 </androidx.appcompat.widget.AppCompatImageView>

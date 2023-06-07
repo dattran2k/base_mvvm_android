@@ -6,7 +6,7 @@
     android:background="@color/color_white"
     android:focusable="true"
     android:clickable="true"
-    tools:context=".presentation.view.M06DemoFragment">
+    tools:context=".presentation.view.m06_demo.M06DemoFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"

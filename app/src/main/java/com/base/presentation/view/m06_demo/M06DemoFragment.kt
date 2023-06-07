@@ -1,8 +1,8 @@
-package com.base.presentation.view
+package com.base.presentation.view.m06_demo
 
-import com.base.presentation.base.BaseFragment
 import com.base.databinding.M06FragmentDemoBinding
-import com.base.presentation.base.popBackStack
+import com.base.presentation.BaseFragment
+import com.base.presentation.popBackStack
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
