@@ -24,7 +24,7 @@ import javax.inject.Inject
 
 @HiltAndroidApp
 class MyApplication : Application() {
-    val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     @Inject
     lateinit var dataStoreManager: DataStoreManager
