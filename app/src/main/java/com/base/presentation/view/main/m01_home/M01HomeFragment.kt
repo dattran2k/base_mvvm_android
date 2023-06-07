@@ -3,6 +3,7 @@ package com.base.presentation.view.main.m01_home
 import androidx.fragment.app.viewModels
 import com.base.databinding.M01FragmentHomeBinding
 import com.base.presentation.base.BaseFragment
+import com.base.presentation.base.navigate
 import com.base.presentation.view.main.M00MainFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -35,7 +36,7 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
                 }
 
                 is HomeUiState.Success -> {
-                    binding.tv.text = state.data
+                    binding.tv.text = state.data.take(5).joinToString(separator = "\n")
                     binding.swLayout.isRefreshing = false
                 }
             }

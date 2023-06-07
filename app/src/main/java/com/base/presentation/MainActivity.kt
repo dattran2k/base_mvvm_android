@@ -47,7 +47,6 @@ class MainActivity : BaseActivity() {
                 }
             }
         })
-
         getController().addOnDestinationChangedListener { _, destination, _ ->
             Timber.e("Destination Change : ${destination.label}")
             when (destination.id) {
@@ -56,7 +55,6 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
-
     }
 
 }

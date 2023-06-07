@@ -2,7 +2,6 @@
 <resources>
 
     <color name="primary">#1F9FFC</color>
-    <color name="active">#1F9FFC</color>
     <color name="color_app">@color/primary</color>
     <color name="color_white">#FFFFFF</color>
     <color name="color_white_alpha_10">#1AFFFFFF</color>

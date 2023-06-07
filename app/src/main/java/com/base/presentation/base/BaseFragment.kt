@@ -30,7 +30,7 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = bindingInflater.invoke(inflater)
         return binding.root
@@ -58,79 +58,9 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
             }
         }
     }
-
     open suspend fun initObserverCreated() {
+
     }
-
-    protected fun navigate(
-        action: NavDirections,
-        animNavigate: AnimNavigate = AnimNavigate.LEFT_RIGHT,
-        isReplace: Boolean = false
-    ) {
-        findNavController().navigate(
-            action,
-            getNavOptions(animNavigate, isReplace)
-        )
-    }
-
-    protected fun navigate(
-        id: Int,
-        arg: Bundle? = null,
-        animNavigate: AnimNavigate = AnimNavigate.LEFT_RIGHT
-
-    ) {
-        findNavController().navigate(
-            id,
-            arg,
-            getNavOptions(animNavigate)
-        )
-    }
-
-    private fun getNavOptions(
-        animNavigate: AnimNavigate,
-        isReplace: Boolean = false
-    ) =
-        NavOptions.Builder().apply {
-            when (animNavigate) {
-                AnimNavigate.LEFT_RIGHT -> {
-                    setEnterAnim(R.anim.slide_in_left)
-                    setExitAnim(R.anim.opacity_1_to_0)
-                    setPopExitAnim(R.anim.slide_out_right)
-                }
-
-                AnimNavigate.UP_DOWN -> {
-                    setEnterAnim(R.anim.slide_in_up)
-                    setExitAnim(R.anim.opacity_1_to_0)
-                    setPopExitAnim(R.anim.slide_out_down)
-                }
-                AnimNavigate.FADE -> {
-                    setEnterAnim(R.anim.opacity_0_to_1)
-                    setExitAnim(R.anim.opacity_1_to_0)
-                    setPopExitAnim(R.anim.opacity_1_to_0)
-                }
-                AnimNavigate.NONE -> {
-                }
-            }
-            if (isReplace)
-                findNavController().currentDestination?.id?.let {
-                    setPopUpTo(it, true)
-                }
-
-        }.build()
-    /**
-     * popBackStack
-     */
-    protected fun pop() {
-        findNavController().popBackStack()
-    }
-
-    /**
-     * Pop utils --->
-     */
-    protected fun popTo(@IdRes destination: Int) {
-        findNavController().popBackStack(destination, true)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         Timber.d(" $TAG onDestroyView")
@@ -145,6 +75,77 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
     enum class AnimNavigate {
         LEFT_RIGHT,
         UP_DOWN,
-        FADE,NONE
+        FADE, NONE
     }
+}
+
+fun Fragment.navigate(
+    action: NavDirections,
+    animNavigate: BaseFragment.AnimNavigate = BaseFragment.AnimNavigate.LEFT_RIGHT,
+    isReplace: Boolean = false,
+) {
+    findNavController().navigate(
+        action,
+        getNavOptions(animNavigate, isReplace)
+    )
+}
+
+fun Fragment.navigate(
+    id: Int,
+    arg: Bundle? = null,
+    animNavigate: BaseFragment.AnimNavigate = BaseFragment.AnimNavigate.LEFT_RIGHT,
+
+    ) {
+    findNavController().navigate(
+        id,
+        arg,
+        getNavOptions(animNavigate)
+    )
+}
+
+private fun Fragment.getNavOptions(
+    animNavigate: BaseFragment.AnimNavigate,
+    isReplace: Boolean = false,
+) = NavOptions.Builder().apply {
+    when (animNavigate) {
+        BaseFragment.AnimNavigate.LEFT_RIGHT -> {
+            setEnterAnim(R.anim.slide_in_left)
+            setExitAnim(R.anim.opacity_1_to_0)
+            setPopExitAnim(R.anim.slide_out_right)
+        }
+
+        BaseFragment.AnimNavigate.UP_DOWN -> {
+            setEnterAnim(R.anim.slide_in_up)
+            setExitAnim(R.anim.opacity_1_to_0)
+            setPopExitAnim(R.anim.slide_out_down)
+        }
+
+        BaseFragment.AnimNavigate.FADE -> {
+            setEnterAnim(R.anim.opacity_0_to_1)
+            setExitAnim(R.anim.opacity_1_to_0)
+            setPopExitAnim(R.anim.opacity_1_to_0)
+        }
+
+        BaseFragment.AnimNavigate.NONE -> {
+        }
+    }
+    if (isReplace)
+        findNavController().currentDestination?.id?.let {
+            setPopUpTo(it, true)
+        }
+
+}.build()
+
+/**
+ * popBackStack
+ */
+fun Fragment.popBackStack() {
+    findNavController().popBackStack()
+}
+
+/**
+ * Pop utils --->
+ */
+fun Fragment.popTo(@IdRes destination: Int) {
+    findNavController().popBackStack(destination, true)
 }

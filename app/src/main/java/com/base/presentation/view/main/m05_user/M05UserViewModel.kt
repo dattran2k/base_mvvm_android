@@ -19,10 +19,7 @@ class M05UserViewModel @Inject constructor(
     private val demoRepository: DemoRepository,
     private val dataStoreManager: DataStoreManager,
 ) : BaseViewModel() {
-    val darkModeState = dataStoreManager.getValue(DataStorePref.PREF_DARK_MODE).distinctUntilChanged().map {
-        it?.let { it1 -> Utility.setAppMode(it1) }
-        it
-    }.stateIn(
+    val darkModeState = dataStoreManager.getValue(DataStorePref.PREF_DARK_MODE).distinctUntilChanged().stateIn(
         viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = DataStorePref.DARK_MODE_UN_ENABLE

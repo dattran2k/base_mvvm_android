@@ -21,7 +21,7 @@ class CustomTab(context: Context, attributeSet: AttributeSet? = null) :
     override fun setSelected(selected: Boolean) {
         super.setSelected(selected)
         val color = if (selected) {
-            R.color.active
+            R.color.primary
         } else {
             R.color.gray_666
         }

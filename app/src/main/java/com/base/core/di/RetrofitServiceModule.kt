@@ -35,8 +35,10 @@ class RetrofitServiceModule {
                 val loggingContent = HttpLoggingInterceptor()
                 loggingContent.setLevel(HttpLoggingInterceptor.Level.BODY)
                 val collector = ChuckerCollector(application)
-                val logging = ChuckerInterceptor.Builder(application).alwaysReadResponseBody(true)
-                    .collector(collector).build()
+                val logging = ChuckerInterceptor.Builder(application)
+                    .alwaysReadResponseBody(true)
+                    .collector(collector)
+                    .build()
                 client.addInterceptor(logging)
                 client.addInterceptor(loggingContent)
             }

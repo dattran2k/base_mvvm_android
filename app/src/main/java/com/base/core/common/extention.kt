@@ -1,6 +1,7 @@
 package com.base.core.common
 
 import android.view.View
+import com.google.gson.Gson
 
 fun View?.show() {
     this?.visibility = View.VISIBLE
@@ -17,3 +18,4 @@ fun View?.hide() {
 fun View?.invisible() {
     this?.visibility = View.INVISIBLE
 }
+fun Any?.toJson(): String = if (this == null) "null" else Gson().toJson(this)

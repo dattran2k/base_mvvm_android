@@ -14,8 +14,12 @@
             android:id="@+id/tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_16sdp"
-            android:text="Hello this is text for test dimention"/>
+            android:textColor="@color/color_title"
+            android:padding="16dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/sf_medium_500"
+            android:lineSpacingMultiplier="2"
+            tools:text="Hello this is text for test dimention"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>

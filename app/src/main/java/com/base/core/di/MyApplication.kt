@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -36,10 +37,9 @@ class MyApplication : Application() {
             Timber.plant(LogsUtil())
         }
         applicationScope.launch {
-            dataStoreManager.getValue(DataStorePref.PREF_DARK_MODE).take(1).collect {
+            dataStoreManager.getValue(DataStorePref.PREF_DARK_MODE).distinctUntilChanged().collect {
                 Utility.setAppMode(it ?: DataStorePref.DARK_MODE_UN_ENABLE)
             }
         }
-
     }
 }

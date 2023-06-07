@@ -72,14 +72,14 @@ android {
             manifestPlaceholders["appLabel"] = "Base Debug"
             versionNameSuffix = "-development"
 
-            buildConfigField("String", "BASE_URL", "\"https://demo.com\"")
+            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\"")
 
         }
         create("production") {
             dimension = "environment"
             manifestPlaceholders["appLabel"] = "Base"
             versionNameSuffix = "-production"
-            buildConfigField("String", "BASE_URL", "\"https://demo.com/\"")
+            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\"")
         }
     }
 
@@ -117,9 +117,6 @@ dependencies {
     // TODO ksp currently not support hilt yet. Still use kapt
     kapt(libs.dagger.hilt.compiler)
 
-    // dimension
-    implementation("com.intuit.sdp:sdp-android:1.1.0")
-    implementation("com.intuit.ssp:ssp-android:1.1.0")
     // api
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.json)
