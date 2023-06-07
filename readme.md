@@ -1,5 +1,5 @@
 ## About tech
-- Support Dark Mode and change DarkMode example (Like Facebook Or Instagram)
+- Support Dark mode and change dark mode example (like Facebook or Instagram)
 - SDK : Java 18
 - MVVM
 - Navigation : [**Navigation component**](https://developer.android.com/guide/navigation/get-started) 
