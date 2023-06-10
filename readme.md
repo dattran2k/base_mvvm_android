@@ -1,4 +1,5 @@
 ## About tech
+- Single Module
 - Support Dark mode and change dark mode example (like Facebook or Instagram)
 - SDK : Java 18
 - MVVM
