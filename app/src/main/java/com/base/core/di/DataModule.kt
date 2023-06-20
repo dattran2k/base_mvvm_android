@@ -1,17 +1,14 @@
 package com.base.core.di
 
-import android.content.Context
-import com.base.core.datastore.DataStoreManager
-import com.base.data.network.ApiDataSource
-import com.base.data.respository.DemoRepository
-import com.base.data.respository.DemoRepositoryIml
+import com.base.data.respository.todo.TodoRepository
+import com.base.data.respository.todo.TodoRepositoryIml
+import com.base.data.respository.user.UserDataRepository
+import com.base.data.respository.user.UserDataRepositoryImpl
+
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.CoroutineDispatcher
-import javax.inject.Singleton
 
 /**
  * Here are the dependencies which will be injected by hilt
@@ -19,21 +16,16 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(SingletonComponent::class)
-object DataModule {
-    @Provides
-    @Singleton
-    fun providesDataStore(
-        @ApplicationContext context: Context,
-    ): DataStoreManager {
-        return DataStoreManager(context)
-    }
+interface DataModule {
+    @Binds
+    fun bindsUserRepository(
+        userDataRepositoryImpl: UserDataRepositoryImpl,
+    ): UserDataRepository
 
-    @Provides
-    fun bindsDemoRepository(
-        dataSource: ApiDataSource,
-        @Dispatcher(NiaDispatchers.IO) dispatcher: CoroutineDispatcher,
-    ): DemoRepository {
-        return DemoRepositoryIml(dataSource, dispatcher)
-    }
+    @Binds
+    fun bindTodoRepository(
+        todoRepositoryImpl: TodoRepositoryIml,
+    ): TodoRepository
+
 
 }

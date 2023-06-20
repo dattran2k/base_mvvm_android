@@ -3,7 +3,7 @@ package com.base.presentation.view.m00_main.m01_home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.base.core.common.Resource
-import com.base.data.respository.DemoRepository
+import com.base.data.respository.todo.TodoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,11 +32,11 @@ Pick one style getData
  */
 
 @HiltViewModel
-class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) :
+class M01HomeViewModel @Inject constructor(private val todoRepository: TodoRepository) :
     ViewModel() {
 
-    private val _homeUiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
-    val homeUiState: StateFlow<HomeUiState> = _homeUiState
+    private val _homeUIState = MutableStateFlow<HomeUIState>(HomeUIState.Loading)
+    val homeUIState: StateFlow<HomeUIState> = _homeUIState
 
     init {
         getData()
@@ -49,14 +49,14 @@ class M01HomeViewModel @Inject constructor(val demoRepository: DemoRepository) :
     private fun getData() {
         viewModelScope.launch {
             // This still have too much boilerplate code, how to improve this ?
-            demoRepository.getDataWithFlow().map {
+            todoRepository.getDataWithFlow().map {
                 when (it) {
-                    is Resource.Error -> HomeUiState.Error(it.message)
-                    Resource.Loading -> HomeUiState.Loading
-                    is Resource.Success -> HomeUiState.Success(it.data)
+                    is Resource.Error -> HomeUIState.Error(it.message)
+                    Resource.Loading -> HomeUIState.Loading
+                    is Resource.Success -> HomeUIState.Success(it.data)
                 }
             }.collect {
-                _homeUiState.emit(it)
+                _homeUIState.emit(it)
             }
         }
     }

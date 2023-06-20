@@ -23,19 +23,19 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
     }
 
     override suspend fun initObserverCreated() {
-        viewModel.homeUiState.collectLatest { state ->
+        viewModel.homeUIState.collectLatest { state ->
             Timber.e(state.toString())
             when (state) {
-                is HomeUiState.Error -> {
+                is HomeUIState.Error -> {
                     binding.swLayout.isRefreshing = false
                     binding.tv.text = state.msg
                 }
 
-                is HomeUiState.Loading -> {
+                is HomeUIState.Loading -> {
                     binding.tv.text = "LOADING"
                 }
 
-                is HomeUiState.Success -> {
+                is HomeUIState.Success -> {
                     binding.tv.text = state.data.take(5).joinToString(separator = "\n")
                     binding.swLayout.isRefreshing = false
                 }

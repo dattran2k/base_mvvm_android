@@ -2,7 +2,6 @@
 compileSdk = "33"
 minSdk = "23"
 targetSdk = "33"
-
 agp = "8.0.0"
 accompanist = "0.15.0"
 androidxlifecycle = "2.6.1"
@@ -19,13 +18,15 @@ okhttp = "5.0.0-alpha.7"
 retrofit = "2.9.0"
 dagger_hilt = "2.45"
 firebase-bom = "31.0.2"
-protobuf = "0.9.1"
+protobuf = "3.23.0"
+protobufPlugin = "0.9.3"
+
 navigation = "2.5.3"
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 android-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger_hilt" }
-protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
 android-lint = { id = "com.android.lint", version.ref = "agp" }
 android-test = { id = "com.android.test", version.ref = "agp" }
 cacheFixPlugin = { id = "org.gradle.android.cache-fix", version = "2.7.1" }
@@ -35,7 +36,7 @@ ksp = "com.google.devtools.ksp:1.8.20-1.0.10"
 gms-googleServices = "com.google.gms.google-services:4.3.15"
 firebase-crashlytics = "com.google.firebase.crashlytics:2.9.5"
 navigation-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
-
+protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 [libraries]
 
 androidx-activity-activity = { module = "androidx.activity:activity", version.ref = "androidxactivity" }
@@ -70,6 +71,8 @@ firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx"
 firebase-messaging = { module = "com.google.firebase:firebase-messaging-ktx" }
 firebase-dynamic-links = { module = "com.google.firebase:firebase-dynamic-links-ktx" }
 
+protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
+protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf" }
 
 junit = "junit:junit:4.13.2"
 

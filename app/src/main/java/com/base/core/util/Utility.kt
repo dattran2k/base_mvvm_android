@@ -1,13 +1,10 @@
 package com.base.core.util
 
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
-import android.provider.Settings
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatDelegate
-import com.base.core.common.DataStorePref
+import com.base.data.model.local.DarkThemeConfig
 
 object Utility {
     //hide keyboard
@@ -22,15 +19,13 @@ object Utility {
         }
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
-    fun setAppMode(state : Int) {
-        AppCompatDelegate.setDefaultNightMode(
-            when (state) {
-                DataStorePref.DARK_MODE_ENABLE -> {
-                    AppCompatDelegate.MODE_NIGHT_YES
-                }
-                DataStorePref.DARK_MODE_SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
-               else-> AppCompatDelegate.MODE_NIGHT_NO
 
+    fun setAppMode(darkThemeConfig: DarkThemeConfig) {
+        AppCompatDelegate.setDefaultNightMode(
+            when (darkThemeConfig) {
+                DarkThemeConfig.FOLLOW_SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+                DarkThemeConfig.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
+                DarkThemeConfig.DARK -> AppCompatDelegate.MODE_NIGHT_YES
             }
         )
     }

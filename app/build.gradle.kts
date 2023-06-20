@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.android.dagger.hilt)
     id("kotlin-parcelize")
     id("kotlin-kapt")
+    alias(libs.plugins.protobuf)
 }
 fun getDate(): String {
     val format = "HH\'h\')_\'Day\'_dd"
@@ -104,8 +105,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.livedata)
+    //data store
     implementation(libs.androidx.datastore)
-
+    implementation(libs.protobuf.kotlin.lite)
     // firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
@@ -130,4 +132,23 @@ dependencies {
     releaseImplementation(libs.chucker.release)
     //Glide
     implementation(libs.glide)
+
+}
+// Setup protobuf configuration, generating lite Java and Kotlin classes
+protobuf {
+    protoc {
+        artifact = libs.protobuf.protoc.get().toString()
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                register("java") {
+                    option("lite")
+                }
+                register("kotlin") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }

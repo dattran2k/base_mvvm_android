@@ -2,7 +2,7 @@ package com.base.presentation.view.m00_main.m05_user
 
 import android.view.View
 import androidx.fragment.app.viewModels
-import com.base.core.common.DataStorePref
+import com.base.data.model.local.DarkThemeConfig
 import com.base.databinding.M05FragmentUserBinding
 import com.base.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,26 +29,25 @@ class M05UserFragment : BaseFragment<M05FragmentUserBinding>(M05FragmentUserBind
         }
     }
 
-    private fun updateSelectedRadio(value: Int?) {
-        val id = getRadioByState(value)
+    private fun updateSelectedRadio(darkThemeConfig: DarkThemeConfig) {
+        val id = getRadioByConfig(darkThemeConfig)
         if (id != -1)
             binding.radioGroup.check(id)
     }
 
-    private fun getStateSelected(view: View): Int {
+    private fun getStateSelected(view: View): DarkThemeConfig {
         return when (view) {
-            binding.btnYes -> DataStorePref.DARK_MODE_ENABLE
-            binding.btnSystem -> DataStorePref.DARK_MODE_SYSTEM
-            else -> DataStorePref.DARK_MODE_UN_ENABLE
+            binding.btnYes -> DarkThemeConfig.DARK
+            binding.btnSystem -> DarkThemeConfig.FOLLOW_SYSTEM
+            else -> DarkThemeConfig.LIGHT
         }
     }
 
-    private fun getRadioByState(state: Int?): Int {
-        return when (state) {
-            DataStorePref.DARK_MODE_ENABLE -> binding.btnYes.id
-            DataStorePref.DARK_MODE_SYSTEM -> binding.btnSystem.id
-            DataStorePref.DARK_MODE_UN_ENABLE -> binding.btnNo.id
-            else -> -1
+    private fun getRadioByConfig(darkThemeConfig: DarkThemeConfig): Int {
+        return when (darkThemeConfig) {
+            DarkThemeConfig.DARK -> binding.btnYes.id
+            DarkThemeConfig.FOLLOW_SYSTEM -> binding.btnSystem.id
+            DarkThemeConfig.LIGHT -> binding.btnNo.id
         }
     }
 }

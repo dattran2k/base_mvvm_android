@@ -3,8 +3,7 @@ package com.base.presentation
 import android.app.Application
 import com.base.BuildConfig
 import com.base.core.common.Constants
-import com.base.core.common.DataStorePref
-import com.base.core.datastore.DataStoreManager
+import com.base.core.datastore.PreferenceDataSource
 import com.base.core.util.InternetUtil
 import com.base.core.util.LogsUtil
 import com.base.core.util.Utility
@@ -14,9 +13,8 @@ import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -27,7 +25,7 @@ class MyApplication : Application() {
     private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     @Inject
-    lateinit var dataStoreManager: DataStoreManager
+    lateinit var userPreferences: PreferenceDataSource
     override fun onCreate() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
@@ -37,8 +35,10 @@ class MyApplication : Application() {
             Timber.plant(LogsUtil())
         }
         applicationScope.launch {
-            dataStoreManager.getValue(DataStorePref.PREF_DARK_MODE).distinctUntilChanged().collect {
-                Utility.setAppMode(it ?: DataStorePref.DARK_MODE_UN_ENABLE)
+            userPreferences.userData.map {
+                it.darkThemeConfig
+            }.distinctUntilChanged().collect {
+                Utility.setAppMode(it)
             }
         }
     }
