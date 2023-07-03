@@ -14,6 +14,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.base.R
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -51,14 +52,14 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
      * obServer state inside viewmodel
      */
     private fun initObserver() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 initObserverCreated()
             }
         }
     }
 
-    open suspend fun initObserverCreated() {
+    open fun CoroutineScope.initObserverCreated() {
 
     }
 

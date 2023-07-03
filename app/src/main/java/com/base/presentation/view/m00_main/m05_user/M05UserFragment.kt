@@ -6,6 +6,8 @@ import com.base.data.model.local.DarkThemeConfig
 import com.base.databinding.M05FragmentUserBinding
 import com.base.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class M05UserFragment : BaseFragment<M05FragmentUserBinding>(M05FragmentUserBinding::inflate) {
@@ -23,9 +25,11 @@ class M05UserFragment : BaseFragment<M05FragmentUserBinding>(M05FragmentUserBind
         }
     }
 
-    override suspend fun initObserverCreated() {
-        viewModel.darkModeState.collect {
-            updateSelectedRadio(it)
+    override fun CoroutineScope.initObserverCreated() {
+        launch {
+            viewModel.darkModeState.collect {
+                updateSelectedRadio(it)
+            }
         }
     }
 

@@ -7,6 +7,7 @@ import com.base.data.respository.todo.TodoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,7 +37,7 @@ class M01HomeViewModel @Inject constructor(private val todoRepository: TodoRepos
     ViewModel() {
 
     private val _homeUIState = MutableStateFlow<HomeUIState>(HomeUIState.Loading)
-    val homeUIState: StateFlow<HomeUIState> = _homeUIState
+    val homeUIState = _homeUIState.asStateFlow()
 
     init {
         getData()
@@ -49,14 +50,14 @@ class M01HomeViewModel @Inject constructor(private val todoRepository: TodoRepos
     private fun getData() {
         viewModelScope.launch {
             // This still have too much boilerplate code, how to improve this ?
-            todoRepository.getDataWithFlow().map {
-                when (it) {
-                    is Resource.Error -> HomeUIState.Error(it.message)
-                    Resource.Loading -> HomeUIState.Loading
-                    is Resource.Success -> HomeUIState.Success(it.data)
-                }
-            }.collect {
-                _homeUIState.emit(it)
+            todoRepository.getDataWithFlow().collect {
+                _homeUIState.emit(
+                    when (it) {
+                        is Resource.Error -> HomeUIState.Error(it.message)
+                        Resource.Loading -> HomeUIState.Loading
+                        is Resource.Success -> HomeUIState.Success(it.data)
+                    }
+                )
             }
         }
     }
