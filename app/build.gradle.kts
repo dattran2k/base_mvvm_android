@@ -10,11 +10,11 @@ plugins {
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.gms.googleServices)
     alias(libs.plugins.navigation.args)
-//    id("com.google.protobuf") version "0.9.1"
     alias(libs.plugins.android.dagger.hilt)
+    alias(libs.plugins.protobuf)
     id("kotlin-parcelize")
     id("kotlin-kapt")
-    alias(libs.plugins.protobuf)
+
 }
 fun getDate(): String {
     val format = "HH\'h\')_\'Day\'_dd"
@@ -42,16 +42,9 @@ android {
             proguardFiles("proguard-rules.pro")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
-    }
     buildFeatures {
         buildConfig = true
         viewBinding = true
-    }
-    kotlinOptions {
-        jvmTarget = "18"
     }
     packaging {
         packagingOptions.resources.excludes += setOf(
@@ -85,16 +78,32 @@ android {
     }
 
 }
-
+protobuf {
+    protoc {
+        artifact = libs.protobuf.protoc.get().toString()
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                register("java") {
+                    option("lite")
+                }
+                register("kotlin") {
+                    option("lite")
+                }
+            }
+        }
+    }
+}
 dependencies {
 
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.material)
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation(libs.androidx.swiperefreshlayout)
     // testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.junit)
@@ -119,36 +128,16 @@ dependencies {
     // TODO ksp currently not support hilt yet. Still use kapt
     kapt(libs.dagger.hilt.compiler)
 
-    // api
+    implementation(libs.glide)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.json)
     implementation(libs.retrofit.converter.scalars)
     implementation(libs.okhttp3)
     implementation(libs.okhttp3.logging.interceptor)
-    // Timber
+
     implementation(libs.timber)
-    // chucker
     debugImplementation(libs.chucker)
     releaseImplementation(libs.chucker.release)
-    //Glide
-    implementation(libs.glide)
 
-}
-// Setup protobuf configuration, generating lite Java and Kotlin classes
-protobuf {
-    protoc {
-        artifact = libs.protobuf.protoc.get().toString()
-    }
-    generateProtoTasks {
-        all().forEach { task ->
-            task.builtins {
-                register("java") {
-                    option("lite")
-                }
-                register("kotlin") {
-                    option("lite")
-                }
-            }
-        }
-    }
+
 }

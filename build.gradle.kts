@@ -26,6 +26,9 @@ allprojects {
     pluginManager.withPlugin("com.android.library") {
         configureAndroidProject()
     }
+    pluginManager.withPlugin("com.android.test") {
+        configureAndroidProject()
+    }
 }
 
 fun Project.configureAndroidProject() {

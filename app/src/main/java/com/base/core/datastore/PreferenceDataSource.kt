@@ -17,12 +17,9 @@ class PreferenceDataSource @Inject constructor(private val userPreferences: Data
                 null,
                 DarkThemeConfigProto.DARK_THEME_CONFIG_UNSPECIFIED,
                 DarkThemeConfigProto.UNRECOGNIZED,
-                DarkThemeConfigProto.DARK_THEME_CONFIG_FOLLOW_SYSTEM,
-                ->
-                    DarkThemeConfig.FOLLOW_SYSTEM
+                DarkThemeConfigProto.DARK_THEME_CONFIG_FOLLOW_SYSTEM -> DarkThemeConfig.FOLLOW_SYSTEM
 
-                DarkThemeConfigProto.DARK_THEME_CONFIG_LIGHT ->
-                    DarkThemeConfig.LIGHT
+                DarkThemeConfigProto.DARK_THEME_CONFIG_LIGHT -> DarkThemeConfig.LIGHT
 
                 DarkThemeConfigProto.DARK_THEME_CONFIG_DARK -> DarkThemeConfig.DARK
             },
@@ -33,9 +30,7 @@ class PreferenceDataSource @Inject constructor(private val userPreferences: Data
         userPreferences.updateData {
             it.copy {
                 this.darkThemeConfig = when (darkThemeConfig) {
-                    DarkThemeConfig.FOLLOW_SYSTEM ->
-                        DarkThemeConfigProto.DARK_THEME_CONFIG_FOLLOW_SYSTEM
-
+                    DarkThemeConfig.FOLLOW_SYSTEM -> DarkThemeConfigProto.DARK_THEME_CONFIG_FOLLOW_SYSTEM
                     DarkThemeConfig.LIGHT -> DarkThemeConfigProto.DARK_THEME_CONFIG_LIGHT
                     DarkThemeConfig.DARK -> DarkThemeConfigProto.DARK_THEME_CONFIG_DARK
                 }

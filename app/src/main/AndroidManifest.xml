@@ -16,7 +16,8 @@
         android:configChanges="uiMode"
         android:theme="@style/Theme.Base"
         android:usesCleartextTraffic="true"
-        tools:replace="android:networkSecurityConfig,android:label">
+        tools:replace="android:networkSecurityConfig,android:label"
+        tools:targetApi="s">
         <activity
             android:name="com.base.presentation.view.SplashActivity"
             android:exported="true"

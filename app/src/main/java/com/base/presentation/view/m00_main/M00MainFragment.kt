@@ -43,7 +43,6 @@ class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBind
         }
         binding.pager.adapter = pagerAdapter
         binding.pager.offscreenPageLimit = listTab.size
-        binding.pager.isUserInputEnabled = false
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.customView = getCustomViewTab(
                 ContextCompat.getDrawable(

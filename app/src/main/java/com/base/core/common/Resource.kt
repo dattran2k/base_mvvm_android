@@ -16,7 +16,7 @@ import retrofit2.Response
  */
 sealed interface Resource<in T : Any> {
     class Success<T : Any>(val data: T) : Resource<T>
-    object Loading : Resource<Any>
+    data object Loading : Resource<Any>
     class Error<T : Any>(val message: String, val code: Int, val data: T? = null) : Resource<T>
 }
 
@@ -47,7 +47,6 @@ suspend fun <T : Any> safeApiCall(
 fun <T : Any> flowSafeApiCall(
     dispatcher: CoroutineDispatcher = Dispatchers.IO,
     request: (suspend () -> Response<T>),
-
 ): Flow<Resource<T>> {
     return flow {
         emit(Resource.Loading)

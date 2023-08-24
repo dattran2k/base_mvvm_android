@@ -2,7 +2,6 @@ package com.base.presentation
 
 import android.app.Application
 import com.base.BuildConfig
-import com.base.core.common.Constants
 import com.base.core.datastore.PreferenceDataSource
 import com.base.core.util.InternetUtil
 import com.base.core.util.LogsUtil
@@ -30,7 +29,7 @@ class MyApplication : Application() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
         InternetUtil.init(this)
-        if (BuildConfig.FLAVOR == Constants.FLAVOR_DEVELOP) {
+        if (BuildConfig.DEBUG) {
             FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(false)
             Timber.plant(LogsUtil())
         }

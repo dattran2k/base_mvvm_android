@@ -26,7 +26,6 @@ abstract class BaseFragment<T : ViewBinding>(private val bindingInflater: (layou
     protected val binding get() = _binding!!
     protected var isReady = _binding != null
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

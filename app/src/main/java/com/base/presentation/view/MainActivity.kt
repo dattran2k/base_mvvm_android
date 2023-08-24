@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     }
 
     override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
+        Timber.e(destination.displayName)
         when (destination.id) {
             R.id.m00_main_fragment -> {
 
