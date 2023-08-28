@@ -1,0 +1,32 @@
+package com.base.core.designsystem.component
+
+import android.content.Context
+import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
+import com.base.core.designsystem.R
+import com.base.core.designsystem.databinding.CustomTabViewpagerBinding
+
+class CustomTab(context: Context, attributeSet: AttributeSet? = null) :
+    LinearLayout(context, attributeSet) {
+    var binding: CustomTabViewpagerBinding? = null
+
+    init {
+        binding = CustomTabViewpagerBinding.inflate(LayoutInflater.from(context), this, true)
+    }
+
+    override fun setSelected(selected: Boolean) {
+        super.setSelected(selected)
+        val color = if (selected) {
+            R.color.primary
+        } else {
+            R.color.gray_666
+        }
+        binding?.tvTitle?.setTextColor(ContextCompat.getColor(context, color))
+        binding?.imIcon?.setColorFilter(
+            ContextCompat.getColor(context, color),
+            android.graphics.PorterDuff.Mode.SRC_IN
+        )
+    }
+}
