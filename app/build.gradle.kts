@@ -58,7 +58,16 @@ android {
             "META-INF/*.properties",
         )
     }
-
+    sourceSets {
+        named("main") {
+            res.srcDirs(
+                "src/main/res/layouts",
+                "src/main/res/layouts/common",
+                "src/main/res/layouts/screen",
+                "src/main/res/layouts/adapter_item"
+            )
+        }
+    }
     flavorDimensions += "environment"
     productFlavors {
         create("development") {
@@ -97,23 +106,21 @@ protobuf {
 }
 dependencies {
 
-    implementation(libs.androidx.core)
+//    implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.swiperefreshlayout)
-    // testing
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.junit)
-    androidTestImplementation(libs.androidx.test.espresso)
 
     implementation(libs.androidx.activity.activity)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.livedata)
+    implementation(libs.androidx.hilt.work)
+    implementation(libs.androidx.work.runtime)
     //data store
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.kotlin.lite)
