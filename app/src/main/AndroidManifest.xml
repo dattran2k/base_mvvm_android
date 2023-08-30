@@ -21,6 +21,7 @@
         <activity
             android:name="com.base.SplashActivity"
             android:exported="true"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:theme="@style/Theme.Base.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +32,7 @@
         <activity
             android:name="com.base.MainActivity"
             android:exported="true"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@style/Theme.Base" />
     </application>

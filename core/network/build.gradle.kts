@@ -10,7 +10,6 @@ android {
     buildFeatures {
         buildConfig = true
     }
-    flavorDimensions += "env"
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\"")
