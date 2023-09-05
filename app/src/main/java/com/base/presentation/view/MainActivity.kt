@@ -14,8 +14,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.base.R
 import com.base.core.util.InternetUtil
-import com.base.databinding.M00ActivityMainBinding
-
+import com.base.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -23,13 +22,13 @@ import timber.log.Timber
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
 
-    private lateinit var binding: M00ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     var isBack = false
     var backHandler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = M00ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initNavigation()
         initListenInternet()

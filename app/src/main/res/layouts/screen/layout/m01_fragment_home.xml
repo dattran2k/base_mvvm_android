@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".presentation.view.m00_main.m01_home.M01HomeFragment">
+    tools:context=".presentation.view.m01_home.M01HomeFragment">
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/sw_layout"
         android:layout_width="match_parent"

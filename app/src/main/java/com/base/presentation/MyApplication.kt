@@ -2,7 +2,7 @@ package com.base.presentation
 
 import android.app.Application
 import com.base.BuildConfig
-import com.base.core.datastore.PreferenceDataSource
+import com.base.data.datastore.PreferenceDataSource
 import com.base.core.util.InternetUtil
 import com.base.core.util.LogsUtil
 import com.base.core.util.Utility

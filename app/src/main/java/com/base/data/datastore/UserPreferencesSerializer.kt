@@ -1,5 +1,5 @@
 
-package com.base.core.datastore
+package com.base.data.datastore
 
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer

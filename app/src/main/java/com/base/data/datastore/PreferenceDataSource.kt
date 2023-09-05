@@ -1,4 +1,4 @@
-package com.base.core.datastore
+package com.base.data.datastore
 
 import androidx.datastore.core.DataStore
 import com.base.DarkThemeConfigProto

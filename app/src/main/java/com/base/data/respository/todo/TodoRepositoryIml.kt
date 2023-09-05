@@ -1,9 +1,9 @@
 package com.base.data.respository.todo
 
-import com.base.core.common.Resource
-import com.base.core.common.flowSafeApiCall
-import com.base.core.di.Dispatcher
-import com.base.core.di.MyDispatchers
+import com.base.data.network.Resource
+import com.base.data.network.flowSafeApiCall
+import com.base.di.Dispatcher
+import com.base.di.MyDispatchers
 import com.base.data.model.TodoItem
 import com.base.data.network.ApiDataSource
 import kotlinx.coroutines.CoroutineDispatcher

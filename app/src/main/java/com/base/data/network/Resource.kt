@@ -1,4 +1,4 @@
-package com.base.core.common
+package com.base.data.network
 
 import com.base.core.util.InternetUtil
 import kotlinx.coroutines.CoroutineDispatcher
@@ -14,10 +14,10 @@ import retrofit2.Response
 /**
  * This is used for getting states of network call
  */
-sealed interface Resource<in T : Any> {
-    class Success<T : Any>(val data: T) : Resource<T>
-    data object Loading : Resource<Any>
-    class Error<T : Any>(val message: String, val code: Int, val data: T? = null) : Resource<T>
+sealed interface Resource<T> {
+    class Success<T>(val data: T) : Resource<T>
+    class Loading<T> : Resource<T>
+    class Error<T>(val message: String, val code: Int, val data: T? = null) : Resource<T>
 }
 
 suspend fun <T : Any> safeApiCall(
@@ -36,7 +36,10 @@ suspend fun <T : Any> safeApiCall(
                     return@withContext Resource.Success(body)
                 }
             }
-            return@withContext Resource.Error(response.errorBody()?.string() ?: response.message(), response.code())
+            return@withContext Resource.Error(
+                response.errorBody()?.string() ?: response.message(),
+                response.code()
+            )
         } catch (e: Exception) {
             e.printStackTrace()
             return@withContext Resource.Error(e.message ?: "Some error", 0)
@@ -44,12 +47,12 @@ suspend fun <T : Any> safeApiCall(
     }
 }
 
-fun <T : Any> flowSafeApiCall(
+fun <T> flowSafeApiCall(
     dispatcher: CoroutineDispatcher = Dispatchers.IO,
     request: (suspend () -> Response<T>),
 ): Flow<Resource<T>> {
-    return flow {
-        emit(Resource.Loading)
+    return flow<Resource<T>> {
+        emit(Resource.Loading())
         if (!InternetUtil.isNetworkAvailable()) {
             emit(Resource.Error("No Internet", 0))
             return@flow

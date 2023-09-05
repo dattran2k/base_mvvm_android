@@ -1,4 +1,4 @@
-package com.base.presentation.view.m00_main.m04_notification
+package com.base.presentation.view.m04_notification
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

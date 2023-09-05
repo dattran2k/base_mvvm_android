@@ -8,6 +8,6 @@ abstract class BaseViewModel : ViewModel() {
     val TAG = this.javaClass.name
     override fun onCleared() {
         super.onCleared()
-        Timber.e("$TAG + onViewModelCleared")
+        Timber.d("$TAG + onViewModelCleared")
     }
 }

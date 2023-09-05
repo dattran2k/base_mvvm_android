@@ -12,4 +12,7 @@
     <string name="text_dark_mode">Dark Mode</string>
     <string name="text_status">Status</string>
     <string name="text_auto_change">Auto change by system</string>
+    <string name="no_internet">No Internet</string>
+    <string name="error">Error</string>
+
 </resources>

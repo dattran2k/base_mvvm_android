@@ -1,11 +1,11 @@
-package com.base.presentation.view.m00_main.m01_home
+package com.base.presentation.view.m01_home
 
 import androidx.fragment.app.viewModels
 import com.base.databinding.M01FragmentHomeBinding
 import com.base.presentation.BaseFragment
 import com.base.presentation.navigate
 import com.base.presentation.view.m00_main.M00MainFragmentDirections
-import com.base.presentation.view.m00_main.m05_user.M05UserViewModel
+import com.base.presentation.view.m05_user.M05UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.collectLatest
@@ -22,9 +22,8 @@ class M01HomeFragment : BaseFragment<M01FragmentHomeBinding>(M01FragmentHomeBind
             navigate(M00MainFragmentDirections.actionM00MainFragmentToM06DemoFragment())
         }
         binding.swLayout.setOnRefreshListener {
-            viewModel.updateData()
+            viewModel.refreshData()
         }
-
     }
 
     override fun CoroutineScope.initObserverCreated() {

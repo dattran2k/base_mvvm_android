@@ -1,4 +1,4 @@
-package com.base.presentation.view.m00_main.m02_trend
+package com.base.presentation.view.m02_trend
 
 import androidx.fragment.app.viewModels
 import com.base.presentation.BaseFragment

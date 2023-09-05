@@ -1,4 +1,4 @@
-package com.base.presentation.view.m00_main.m05_user
+package com.base.presentation.view.m05_user
 
 import android.view.View
 import androidx.fragment.app.viewModels

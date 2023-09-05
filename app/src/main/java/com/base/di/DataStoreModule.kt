@@ -1,11 +1,11 @@
-package com.base.core.di
+package com.base.di
 
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import com.base.UserPreferences
-import com.base.core.datastore.UserPreferencesSerializer
+import com.base.data.datastore.UserPreferencesSerializer
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import com.base.R
 import com.base.databinding.M00FragmentMainBinding
 import com.base.presentation.BaseFragment
-import com.base.presentation.view.m00_main.m01_home.M01HomeFragment
-import com.base.presentation.view.m00_main.m02_trend.M02TrendFragment
-import com.base.presentation.view.m00_main.m03_discover.M03DiscoverFragment
-import com.base.presentation.view.m00_main.m04_notification.M04NotificationFragment
-import com.base.presentation.view.m00_main.m05_user.M05UserFragment
+import com.base.presentation.view.m01_home.M01HomeFragment
+import com.base.presentation.view.m02_trend.M02TrendFragment
+import com.base.presentation.view.m03_discover.M03DiscoverFragment
+import com.base.presentation.view.m04_notification.M04NotificationFragment
+import com.base.presentation.view.m05_user.M05UserFragment
 import com.base.presentation.widget.CustomTab
 import com.google.android.material.tabs.TabLayoutMediator
 

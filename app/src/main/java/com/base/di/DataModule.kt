@@ -1,4 +1,4 @@
-package com.base.core.di
+package com.base.di
 
 import com.base.data.respository.todo.TodoRepository
 import com.base.data.respository.todo.TodoRepositoryIml
