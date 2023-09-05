@@ -2,11 +2,13 @@ package com.base.presentation.view.m05_user
 
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.base.data.model.local.DarkThemeConfig
 import com.base.databinding.M05FragmentUserBinding
 import com.base.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -25,10 +27,12 @@ class M05UserFragment : BaseFragment<M05FragmentUserBinding>(M05FragmentUserBind
         }
     }
 
-    override fun CoroutineScope.initObserverCreated() {
-        launch {
-            viewModel.darkModeState.collect {
-                updateSelectedRadio(it)
+    override fun initObserver() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.darkModeState.collect {
+                    updateSelectedRadio(it)
+                }
             }
         }
     }

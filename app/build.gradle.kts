@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.gms.googleServices)
-    alias(libs.plugins.navigation.args)
     alias(libs.plugins.android.dagger.hilt)
     alias(libs.plugins.protobuf)
     id("kotlin-parcelize")
@@ -111,7 +110,6 @@ dependencies {
     implementation(libs.androidx.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.swiperefreshlayout)
 
     implementation(libs.androidx.activity.activity)

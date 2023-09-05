@@ -38,7 +38,6 @@ kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 ksp = {id = "com.google.devtools.ksp" , version.ref = "ksp"}
 gms-googleServices = "com.google.gms.google-services:4.3.15"
 firebase-crashlytics = "com.google.firebase.crashlytics:2.9.5"
-navigation-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 [libraries]
 
@@ -53,8 +52,6 @@ androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtim
 androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "androidxlifecycle" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidxlifecycle" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
-androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
-androidx-navigation-args = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 androidx-test-core = "androidx.test:core-ktx:1.5.0"

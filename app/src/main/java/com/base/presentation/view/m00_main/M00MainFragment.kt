@@ -55,6 +55,10 @@ class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBind
 
     }
 
+    override fun initObserver() {
+
+    }
+
     private fun getCustomViewTab(
         image: Drawable?,
         text: String?,
@@ -64,6 +68,5 @@ class M00MainFragment : BaseFragment<M00FragmentMainBinding>(M00FragmentMainBind
         tab.binding?.tvTitle?.text = text
         return tab
     }
-
 
 }

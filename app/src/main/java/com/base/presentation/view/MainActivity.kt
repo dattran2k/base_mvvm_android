@@ -1,66 +1,30 @@
 package com.base.presentation.view
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.base.R
 import com.base.core.util.InternetUtil
 import com.base.databinding.ActivityMainBinding
+import com.base.presentation.NavigationManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
+class MainActivity : AppCompatActivity(), FragmentManager.OnBackStackChangedListener {
 
     private lateinit var binding: ActivityMainBinding
-    var isBack = false
-    var backHandler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initNavigation()
-        initListenInternet()
-    }
-
-    private fun getController() = findNavController(R.id.nav_host_fragment_content_main)
-    private fun initNavigation() {
-        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (getController().previousBackStackEntry == null) {
-                    if (!isBack) {
-                        Toast.makeText(
-                            this@MainActivity,
-                            "Click 1 more time to back",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        isBack = true
-                        backHandler.postDelayed({
-                            isBack = false
-                        }, 3000)
-                    } else {
-                        finish()
-                    }
-                } else {
-                    getController().popBackStack()
-                }
-            }
-        })
-        getController().addOnDestinationChangedListener(this)
-    }
-
-    private fun initListenInternet() {
+        NavigationManager.getInstance().init(this, R.id.nav_host_fragment_content_main, this)
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 InternetUtil.internetState.collect {
@@ -70,18 +34,14 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         }
     }
 
-    override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
-        Timber.e(destination.displayName)
-        when (destination.id) {
-            R.id.m00_main_fragment -> {
-
-            }
-        }
+    override fun onBackStackChanged() {
+        val currentFragment = NavigationManager.getInstance().getCurrentFragment() ?: return
+        Timber.e("onBackStackChanged: $currentFragment ")
     }
 
     override fun onDestroy() {
-        getController().removeOnDestinationChangedListener(this)
+        NavigationManager.getInstance().release()
         super.onDestroy()
-    }
 
+    }
 }

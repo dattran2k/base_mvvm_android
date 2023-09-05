@@ -1,8 +1,8 @@
 package com.base.presentation.view.m04_notification
 
 import androidx.fragment.app.viewModels
-import com.base.presentation.BaseFragment
 import com.base.databinding.M04FragmentNotificationBinding
+import com.base.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -13,6 +13,9 @@ class M04NotificationFragment : BaseFragment<M04FragmentNotificationBinding>(M04
 
     }
 
-   
+    override fun initObserver() {
+
+    }
+
 
 }

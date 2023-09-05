@@ -3,7 +3,6 @@
 - Support Dark mode and change dark mode example (like Facebook or Instagram)
 - SDK : Java 18
 - MVVM
-- Navigation : [**Navigation component**](https://developer.android.com/guide/navigation/get-started) 
 - [**Coroutines**](https://developer.android.com/kotlin/coroutines) - [**Flow**](https://developer.android.com/kotlin/flow)
 - Data : 
   - Internet : [**Retrofit**](https://square.github.io/retrofit/) 
