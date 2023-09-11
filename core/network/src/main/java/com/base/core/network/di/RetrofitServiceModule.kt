@@ -1,8 +1,8 @@
 package com.base.core.network.di
 
 import android.content.Context
-import com.base.core.network.BuildConfig
 import com.base.core.network.DemoServiceRetrofit
+import com.base.core.network.BuildConfig
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson

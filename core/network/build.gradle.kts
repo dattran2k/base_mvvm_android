@@ -1,8 +1,10 @@
+import java.util.regex.Pattern
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.android.dagger.hilt)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -10,12 +12,23 @@ android {
     buildFeatures {
         buildConfig = true
     }
-    buildTypes {
-        debug {
-            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\"")
-        }
-        release {
-            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\"")
+    defaultConfig {
+        when (getCurrentFlavor()) {
+            "dev" -> {
+                buildConfigField(
+                    "String",
+                    "BASE_URL",
+                    "\"https://jsonplaceholder.typicode.com/\""
+                )
+            }
+
+            "prod" -> {
+                buildConfigField(
+                    "String",
+                    "BASE_URL",
+                    "\"https://jsonplaceholder.typicode.com/\""
+                )
+            }
         }
     }
 }
@@ -24,7 +37,7 @@ dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:common"))
     implementation(libs.dagger.hilt.library)
-    kapt(libs.dagger.hilt.compiler)
+    ksp(libs.dagger.hilt.compiler)
     debugImplementation(libs.chucker)
     releaseImplementation(libs.chucker.release)
     implementation(libs.retrofit)
@@ -32,4 +45,22 @@ dependencies {
     implementation(libs.retrofit.converter.scalars)
     implementation(libs.okhttp3)
     implementation(libs.okhttp3.logging.interceptor)
+}
+
+fun getCurrentFlavor(): String {
+    val tskReqStr = gradle.startParameter.taskRequests.toString()
+
+    val pattern = if (tskReqStr.contains("assemble"))
+        Pattern.compile("assemble(\\w+)(Release|Debug)")
+    else
+        Pattern.compile("generate(\\w+)(Release|Debug)")
+
+    val matcher = pattern.matcher(tskReqStr)
+
+    return if (matcher.find())
+        matcher.group(1).lowercase()
+    else {
+        println("NO MATCH FOUND")
+        ""
+    }
 }

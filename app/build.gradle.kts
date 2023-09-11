@@ -6,11 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.cacheFixPlugin)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.firebase.crashlytics)
-    alias(libs.plugins.gms.googleServices)
     alias(libs.plugins.android.dagger.hilt)
-    id("kotlin-parcelize")
-    id("kotlin-kapt")
 
 }
 fun getDate(): String {
@@ -43,32 +39,6 @@ android {
         buildConfig = true
         viewBinding = true
     }
-    packaging {
-        packagingOptions.resources.excludes += setOf(
-            // Exclude AndroidX version files
-            "META-INF/*.version",
-            // Exclude consumer proguard files
-            "META-INF/proguard/*",
-            // Exclude the Firebase/Fabric/other random properties files
-            "/*.properties",
-            "fabric/*.properties",
-            "META-INF/*.properties",
-        )
-    }
-    flavorDimensions += "environment"
-    productFlavors {
-        create("development") {
-            dimension = "environment"
-            manifestPlaceholders["appLabel"] = "Base Debug"
-            versionNameSuffix = "-development"
-
-        }
-        create("production") {
-            dimension = "environment"
-            manifestPlaceholders["appLabel"] = "Base"
-            versionNameSuffix = "-production"
-        }
-    }
 }
 dependencies {
     implementation(project(":core:common"))
@@ -88,16 +58,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.hilt.work)
     implementation(libs.androidx.work.runtime)
-    // firebase
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics)
-    implementation(libs.firebase.crashlytics)
-    implementation(libs.firebase.messaging)
-    implementation(libs.firebase.dynamic.links)
     // hilt
     implementation(libs.dagger.hilt.library)
-    // TODO ksp currently not support hilt yet. Still use kapt
-    kapt(libs.dagger.hilt.compiler)
+    ksp(libs.dagger.hilt.compiler)
 
     implementation(libs.timber)
 

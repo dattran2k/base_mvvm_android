@@ -2,7 +2,7 @@ package com.base.ui.feature.m01_home
 
 import androidx.lifecycle.viewModelScope
 import com.base.core.data.repository.todo.TodoRepository
-import com.base.core.network.Resource
+import com.base.core.model.network.Resource
 import com.base.ui.feature.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

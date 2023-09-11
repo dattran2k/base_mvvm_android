@@ -1,6 +1,7 @@
 package com.base.core.network
 
 import com.base.core.common.util.InternetUtil
+import com.base.core.model.network.Resource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -11,14 +12,6 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 
-/**
- * This is used for getting states of network call
- */
-sealed interface Resource<in T : Any> {
-    class Success<T : Any>(val data: T) : Resource<T>
-    data object Loading : Resource<Any>
-    class Error<T : Any>(val message: String, val code: Int, val data: T? = null) : Resource<T>
-}
 
 suspend fun <T : Any> safeApiCall(
     dispatcher: CoroutineDispatcher,

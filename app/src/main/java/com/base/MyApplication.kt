@@ -5,8 +5,6 @@ import com.base.core.datastore.PreferenceDataSource
 import com.base.core.common.util.InternetUtil
 import com.base.core.common.util.LogsUtil
 import com.base.core.common.util.Utility
-import com.google.firebase.FirebaseApp
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,10 +24,8 @@ class MyApplication : Application() {
     lateinit var userPreferences: PreferenceDataSource
     override fun onCreate() {
         super.onCreate()
-        FirebaseApp.initializeApp(this)
         InternetUtil.init(this)
         if (BuildConfig.DEBUG) {
-            FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(false)
             Timber.plant(LogsUtil())
         }
         // TODO check this better way

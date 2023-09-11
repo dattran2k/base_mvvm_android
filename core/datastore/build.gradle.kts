@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.android.dagger.hilt)
     alias(libs.plugins.protobuf)
-    kotlin("kapt")
 }
 
 android {
@@ -39,5 +38,5 @@ dependencies {
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.kotlin.lite)
     implementation(libs.dagger.hilt.library)
-    kapt(libs.dagger.hilt.compiler)
+    ksp(libs.dagger.hilt.compiler)
 }

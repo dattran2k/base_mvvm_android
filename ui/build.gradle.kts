@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.navigation.args)
     alias(libs.plugins.cacheFixPlugin)
     alias(libs.plugins.android.dagger.hilt)
-    id("kotlin-kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -20,7 +20,6 @@ dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:model"))
     implementation(project(":core:common"))
-    implementation(project(":core:network"))
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.material)
     implementation(libs.androidx.constraintlayout)
@@ -32,7 +31,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.dagger.hilt.library)
-    kapt(libs.dagger.hilt.compiler)
+    ksp(libs.dagger.hilt.compiler)
     implementation(libs.timber)
     implementation(libs.glide)
 }

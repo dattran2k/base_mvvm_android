@@ -10,13 +10,12 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:label="${appLabel}"
+        android:label="Base"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:configChanges="uiMode"
         android:theme="@style/Theme.Base"
         android:usesCleartextTraffic="true"
-        tools:replace="android:networkSecurityConfig,android:label"
         tools:targetApi="s">
         <activity
             android:name="com.base.SplashActivity"
