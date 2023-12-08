@@ -10,7 +10,4 @@
 - DI : [**Hilt & Dagger2**](https://developer.android.com/training/dependency-injection/hilt-android)
 - Debugging : [**Chucker**](https://github.com/ChuckerTeam/chucker), [**Timber**](https://github.com/JakeWharton/timber)
 
- ## Other
- * Reactive programing : https://github.com/dattran2k/now_in_android_flow_explain
-
  
